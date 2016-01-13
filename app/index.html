@@ -56,8 +56,9 @@
            <table class=table>
         <caption>Life Journey -- <a href="#">Harry Potter</a></caption>
         <thead> <tr> <th>Date</th> <th>Location</th> <th>Event</th> <th>Characters</th> </tr> </thead>
-        <tbody> <tr> <th scope=row>31 July 1980</th> <td><a href="#">Little Whinging, England</a></td> <td>Birth of Harry</td> <td>Harry, Lilly, James, Voldemort</td> </tr> <tr> <th scope=row>2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> </tr> <tr>
-        <th scope=row>3</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> </tr> </tbody> </table>
+        <tbody>
+        <tr ng-repeat="milestone in milestones">
+        <th scope=row>{{milestone.date}}</th> <td>{{milestone.location}}</td> <td>{{milestone.event}}</td> <td>{{milestone.cast}}</td> </tr> </tbody> </table>
      </div>
      </div>
 
