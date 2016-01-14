@@ -1,6 +1,6 @@
 angular.module("travelogue", []).controller('mainCtrl', function($scope){
 
-$scope.locations = ["John","Paul","George", "Ringo"];
+$scope.characters = ["John","Paul","George", "Ringo"];
     
 $scope.milestones = [
         {date:'31 July 1980', location:'London, England', event: 'Birthday', cast: 'Harry, Hermione'},
