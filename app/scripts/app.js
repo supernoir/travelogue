@@ -6,5 +6,16 @@ $scope.milestones = [
         {date:'31 July 1980', location:'London, England', event: 'Birthday', cast: 'Harry, Hermione'},
         {date:'22 October 1979', location:'Pune, India', event: 'Trip to India', cast: 'Hermione'},
         ];
+
+$scope.journeynames = []
+
+$scope.addMilestone = function (milestone) {
+    $scope.milestones.push(milestone);
+    }
+
+$scope.createJourney = function(journeyname) {
+    console.log(journeyname);
+}
     
 });
+
