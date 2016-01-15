@@ -33,6 +33,23 @@
            <hr />
         </div>
 
+     <div class="panel panel-default">
+         <div class="panel-heading">
+            <p><h2>Journeys</h2></p>
+            <p class="lead">All Journeys listed</p>
+        </div>
+         <div class="panel-body">
+        <table class=table>
+        <thead> <tr> <th>ID</th> <th>Journey Name</th> <th>Character</th> <th>Cast</th></tr> </thead>
+        <tbody>
+        <tr ng-repeat="journey in journeys">
+        <th scope=row>{{journey.uuid}}</th> <td>{{journey.name}}</td> <td><code>Your Character</code></td> <td>{{journey.cast}}</td> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
+      <button type="submit" class="btn btn-default" ng-click="addJourney(journey);">Add Journey</button>
+     </div>
+     </div>
+
+     <hr />
+
       <div class="panel panel-default">
           <div class="panel-heading">
         <p><h2>New journey </h2></p>
@@ -50,7 +67,7 @@
     <label class="col-sm-2 control-label">Connect to Character</label>
     <div class="col-sm-10">
         <select class="form-control">
-              <option ng-repeat="character in characters">{{character}}</option>
+              <option ng-repeat="character in characters"><b>{{character.firstname}} {{character.lastname}} (ID:{{character.uuid}})</option>
         </select>
     </div>
   </div>
@@ -70,14 +87,15 @@
 
      <hr />
 
-     <div class="panel panel-default">
-         <div class="panel-heading">
-            <p><h2>Journeys</h2></p>
-            <p class="lead">All Journeys listed</p>
+
+     <div class="panel panel-default" ng-repeat="journey in journeys">
+         <div class="panel-heading" >
+            <p><h2>{{journey.uuid}} <strong>{{journey.name}}</strong></h2></p>
+            <p class="lead">Cast: <strong><a href="#">{{journey.cast}}</a></strong></p>
         </div>
          <div class="panel-body">
            <table class=table>
-        <caption>Life Journey -- <a href="#">Harry Potter</a></caption>
+        <caption>Where <code>character.name</code> meets with his friend to go on a roadtrip around the USA -- <a href="#">Edit</a></caption>
         <thead> <tr> <th>Date</th> <th>Location</th> <th>Event</th> <th>Characters</th> <th>Options</th> </tr> </thead>
         <tbody>
         <tr ng-repeat="milestone in milestones">
