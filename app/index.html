@@ -3,13 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>travelogue</title>
+      <base href="/">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--<link rel="stylesheet" href="styles/main.css">-->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
-    <script src="../bower_components/modernizr/modernizr.js"></script>
+<!--    <script src="../bower_components/modernizr/modernizr.js"></script>-->
     <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
     <script src="scripts/app.js"></script>
   </head>
   <body ng-app="travelogue" style="padding-top:70px;" >
@@ -27,138 +29,16 @@
 
 </nav>
 
+<div ng-view>
 
         <div class="header clearfix">
            <h1><small><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></small> Travelogue</h1>
            <hr />
         </div>
 
-     <div class="panel panel-default">
-         <div class="panel-heading">
-            <p><h2>Journeys</h2></p>
-            <p class="lead">All Journeys listed</p>
-        </div>
-         <div class="panel-body">
-        <table class=table>
-        <thead> <tr> <th>ID</th> <th>Journey Name</th> <th>Character</th> <th>Cast</th></tr> </thead>
-        <tbody>
-        <tr ng-repeat="journey in journeys">
-        <th scope=row>{{journey.uuid}}</th> <td>{{journey.name}}</td> <td><code>Your Character</code></td> <td>{{journey.cast}}</td> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
-      <button type="submit" class="btn btn-default" ng-click="">Add Journey <code>OPENS JOURNEY</code></button>
-     </div>
-     </div>
-
-     <hr />
-
-      <div class="panel panel-default">
-          <div class="panel-heading">
-        <p><h2>New journey </h2></p>
-        <p class="lead">Create a new Journey</p>
-           </div>
-           <div class="panel-body">
-        <form class="form-horizontal">
-  <div class="form-group">
-    <label for="journey" class="col-sm-2 control-label">Journey Name</label>
-    <div class="col-sm-10">
-      <input ng-model="journeynewname" type="text" class="form-control" id="journeynewname" placeholder="On the road with Jack Kerouac">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="journey" class="col-sm-2 control-label">Cast</label>
-    <div class="col-sm-10">
-      <input ng-model="journeynewcast" type="text" class="form-control" id="journeynewcast" placeholder="John, Paul, George and Ringo">
-    </div>
-  </div>  
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Connect to Character</label>
-    <div class="col-sm-10">
-        <select class="form-control">
-              <option ng-repeat="character in characters"><b>{{character.firstname}} {{character.lastname}} (ID:{{character.uuid}})</option>
-        </select>
-    </div>
-  </div>
-    <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" ng-click="createJourney(journey);">Create Journey</button><br><br>
-      <small>These are not the droids you are looking for? <a href="#">Find character</a> or <a href="#">Create character.</a></small>
-    </div>
-  </div>
-</form>
-    <div class="col-sm-10">
-
-    </div>
-
-      </div>
-      </div>
-
-     <hr />
 
 
-     <div class="panel panel-default" ng-repeat="journey in journeys">
-         <div class="panel-heading">
-            <p><h2><strong>{{journey.name}}</strong></h2></p>
-            <p class="lead">Cast: <strong><a href="#">{{journey.cast}}</a></strong> | {{journey.uuid}}</p>
-        </div>
-         <div class="panel-body">
-           <table class=table>
-        <caption>Where <code>character.name</code> meets with his friend to go on a roadtrip around the USA -- <a href="#">Edit</a></caption>
-        <thead> <tr> <th>Date</th> <th>Location</th> <th>Event</th> <th>Characters</th> <th>Options</th> </tr> </thead>
-        <tbody>
-        <tr ng-repeat="milestone in milestones">
-        <th scope=row>{{milestone.date}}</th> <td>{{milestone.location}}</td> <td>{{milestone.event}}</td> <td>{{milestone.cast}}</td> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
-      <button type="submit" class="btn btn-default" ng-click="addMilestone(milestone);">Add Milestone</button>
-     </div>
-     </div>
-
-     <hr />
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <p><h2>New Milestone</h2></p>
-        <p class="lead">Add a new Milestone</p>
-    </div>
-
-           <div class="panel-body">
-        <form class="form-horizontal">
-
-  <div class="form-group">
-    <label for="" class="col-sm-2 control-label">Date</label>
-    <div class="col-sm-10">
-      <input ng-model="newdate" type="text" class="form-control" id="newdate" placeholder="31 July 1980">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="" class="col-sm-2 control-label">Location</label>
-    <div class="col-sm-10">
-      <input ng-model="newlocation" type="text" class="form-control" id="newlocation" placeholder="London, England">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="" class="col-sm-2 control-label">Event</label>
-    <div class="col-sm-10">
-      <input ng-model="newevent" type="text" class="form-control" id="newevent" placeholder="Renting a Room with a View">
-    </div>
-  </div>
-
-
-  <div class="form-group">
-    <label for="" class="col-sm-2 control-label">Cast</label>
-    <div class="col-sm-10">
-      <input ng-model="newcast" type="text" class="form-control" id="newcast" placeholder="John, Paul, George, Ringo">
-    </div>
-  </div>
-
-
-    <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" ng-click="createMilestone(date,location,event,cast);">Create Milestone</button>
-    </div>
-  </div>
-</form>
-      </div>
-
+<!-- closing ngview div -->
 </div>
 
       <div class="footer">

@@ -1,4 +1,33 @@
-angular.module("travelogue", []).controller('mainCtrl', function($scope){
+    var travelogue = angular.module('travelogue', ['ngRoute']);
+
+    // configure our routes
+    travelogue.config(function($routeProvider,$locationProvider) {
+        $routeProvider
+
+            .when('/', {
+                templateUrl : '/views/home.html',
+                controller  : 'mainCtrl'
+            })
+
+            .when('/list_journeys', {
+                templateUrl : '/views/list_journeys.html',
+                controller  : 'mainCtrl'
+            })
+
+            .when('/new_journey', {
+                templateUrl : '/views/new_journey.html',
+                controller  : 'mainCtrl'
+            })
+
+            .when('/new_milestone', {
+                templateUrl : '/views/new_milestone.html',
+                controller  : 'mainCtrl'
+            });
+            $locationProvider.html5Mode(true);
+            
+    });
+
+travelogue.controller('mainCtrl', function($scope){
 
 $scope.characters = [
     {firstname:'John',lastname:'Lennon',uuid:'0001'},
