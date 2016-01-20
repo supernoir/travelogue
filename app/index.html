@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>travelogue</title>
-      <base href="/">
+      <!--<base href="/">-->
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <script src="../bower_components/angular-route/angular-route.min.js"></script>
     <script src="scripts/app.js"></script>
   </head>
-  <body ng-app="travelogue" style="padding-top:70px;" >
+  <body ng-app="travelogueApp" style="padding-top:70px;" >
     <div class="container" ng-controller="mainCtrl">
         
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -22,24 +22,21 @@
   <a class="navbar-brand" href="#">Imaginary Friends</a>
   <ul class="nav navbar-nav">
         <li><a href="#"><span class="glyphicon glyphicon glyphicon-user"></span> Characters</a></li>
-        <li class="active"><a href="#"><span class="glyphicon glyphicon glyphicon-globe"></span> Travelogue</a></li>
+        <li class="active"><a href="#/"><span class="glyphicon glyphicon glyphicon-globe"></span> Travelogue</a></li>
         <li><a href="#"><span class="glyphicon glyphicon glyphicon-calendar"></span> Timelines</a></li>
         </ul>
     </div>
 
 </nav>
 
-<div ng-view>
 
         <div class="header clearfix">
            <h1><small><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></small> Travelogue</h1>
            <hr />
         </div>
+        <a href="#/">Home</a> | <a href="#/list_journeys">List Journeys</a> | <a href="#/new_journey">New Journey</a> | <a href="#/new_milestone">New Milestone</a>
 
-
-
-<!-- closing ngview div -->
-</div>
+<div ng-view><!-- VIEWS are displayed here --></div>
 
       <div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span> -- &copy; Rubynettes 2015</p>

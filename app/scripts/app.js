@@ -1,33 +1,33 @@
-    var travelogue = angular.module('travelogue', ['ngRoute']);
+    var travelogueApp = angular.module('travelogueApp', ['ngRoute']);
 
     // configure our routes
-    travelogue.config(function($routeProvider,$locationProvider) {
+    travelogueApp.config(function($routeProvider) {
         $routeProvider
 
             .when('/', {
-                templateUrl : '/views/home.html',
+                templateUrl : 'views/home.html',
                 controller  : 'mainCtrl'
             })
 
             .when('/list_journeys', {
-                templateUrl : '/views/list_journeys.html',
+                templateUrl : 'views/list_journeys.html',
                 controller  : 'mainCtrl'
             })
 
             .when('/new_journey', {
-                templateUrl : '/views/new_journey.html',
+                templateUrl : 'views/new_journey.html',
                 controller  : 'mainCtrl'
             })
 
             .when('/new_milestone', {
-                templateUrl : '/views/new_milestone.html',
+                templateUrl : 'views/new_milestone.html',
                 controller  : 'mainCtrl'
             });
-            $locationProvider.html5Mode(true);
+//            $locationProvider.html5Mode(true);
             
     });
 
-travelogue.controller('mainCtrl', function($scope){
+travelogueApp.controller('mainCtrl', function($scope){
 
 $scope.characters = [
     {firstname:'John',lastname:'Lennon',uuid:'0001'},
@@ -65,20 +65,13 @@ $scope.createJourney = function(name,cast,uuid) {
         $scope.journeys = $scope.journeys.concat(newJourney);
 }
 
-
 // Generate UUID
 $scope.generateUUID = function(){
-    var d = new Date().getTime();
-    if(window.performance && typeof window.performance.now === "function"){
-        d += performance.now();; //use high-precision timer if available
-    }
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = (d + Math.random()*16)%16 | 0;
-        d = Math.floor(d/16);
-        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-    });
+    var uuid = Math.random(1000);
     return uuid;
 }
+
+
     
 });
 
