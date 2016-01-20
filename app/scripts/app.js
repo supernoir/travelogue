@@ -70,8 +70,6 @@ $scope.generateUUID = function(){
     var uuid = Math.random(1000);
     return uuid;
 }
-
-
     
 });
 
