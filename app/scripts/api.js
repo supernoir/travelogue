@@ -3,6 +3,20 @@
 // Make a new module
 
 travelogueApp.controller('characterController', function ($scope, $http){
-    $http.jsonp('http://www.bento-design.com/dev/travelogue/characters.json');
-    console.log('works');
+    
+
+$http({
+  method: 'GET',
+  url: 'http://localhost:9000/json/characters.json'
+}).then(function successCallback(response) {
+    console.log(response);
+    console.log(response.data);
+    $scope.data = response.data;
+  }, function errorCallback(response) {
+      console.error("Doesn't work!");
+  });
+
+
+
+
 });
