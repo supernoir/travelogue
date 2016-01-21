@@ -1,6 +1,6 @@
 // Creating an API for the App to receive data from a source
 // Connects to the data source (JSON > MongoDB)
-// Make a new module
+// Make a new Controller
 
 travelogueApp.controller('characterController', function ($scope, $http){
     
@@ -15,8 +15,4 @@ $http({
   }, function errorCallback(response) {
       console.error("Doesn't work!");
   });
-
-
-
-
 });
