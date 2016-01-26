@@ -35,27 +35,12 @@ $http({
   method: 'GET',
   url: 'http://localhost:8080/characters'
 }).then(function successCallback(response) {
-       console.log(response.status, response.statusText);
+       console.log(response.status, "Everything is " + response.statusText);
     $scope.characters = response.data;
   }, function errorCallback(response) {
       console.error(response.status, response.statusText);
   });
 
-
-/*  $http.jsonp('http://localhost:8080/characters?format=jsonp&callback=JSON_CALLBACK')
-       .then(function successCallback(data) {
-        console.log(data);
-        $scope.data = data;
-        }, function errorCallback(data) {
-      console.error(data);
-  });*/
-
-$scope.characters = [
-    {firstname:'John',lastname:'Lennon',uuid:'0001'},
-    {firstname:'Paul',lastname:'McCartney',uuid:'0002'},
-    {firstname:'George',lastname:'Harris',uuid:'0003'},
-    {firstname:'Ringo',lastname:'Starr',uuid:'0004'}
-];
     
 $scope.milestones = [
         {date:'31 July 1980', location:'London, England', event: 'Birthday', cast: 'Harry, Hermione'},

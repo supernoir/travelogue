@@ -28,14 +28,13 @@ app.use(function (request, response, next) {
 
 app.get('/characters', function(request, response) {
         Characters.find(function(error, characters) {
-
             if (error)
                 response.send(error)
-
             response.json(characters);
         });
     });
 
+app.post('characters')
 
 app.get('*', function(request, response) {
         response.sendfile('./index.html');
