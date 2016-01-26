@@ -1,7 +1,7 @@
 var express  = require('express');
-var app      = express();                               // create our app w/ express
+var app      = express();                               
 
-var mongoose = require('mongoose');                     // mongoose for mongodb
+var mongoose = require('mongoose');                     
 
 //var morgan = require('morgan');             // log requests to the console (express4)
 //var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
@@ -19,6 +19,10 @@ app.use(express.static(__dirname + '/public'));                 // set the stati
 //app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 //app.use(methodOverride());
 
-// listen (start app with node server.js) ======================================
+
 app.listen(8080);
 console.log("App listening on port 8080");
+
+app.get('*', function(req, res) {
+        res.sendfile('./app/index.html');
+    });
