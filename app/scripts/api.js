@@ -1,3 +1,5 @@
+'use strict';
+
 // Creating an API for the App to receive data from a source
 // Connects to the data source (JSON > MongoDB)
 // Make a new Controller
@@ -9,10 +11,10 @@ $http({
   method: 'GET',
   url: 'http://localhost:9000/json/characters.json'
 }).then(function successCallback(response) {
-    console.log(response);
-    console.log(response.data);
+ //   console.log(response);
+       console.log(response.status);
     $scope.data = response.data;
   }, function errorCallback(response) {
-      console.error("Doesn't work!");
+      console.error(response.status);
   });
 });

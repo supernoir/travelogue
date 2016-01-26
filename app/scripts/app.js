@@ -1,3 +1,5 @@
+'use strict';
+
     var travelogueApp = angular.module('travelogueApp', ['ngRoute']);
 
     // configure our routes
