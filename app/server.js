@@ -18,6 +18,12 @@ app.use(express.static(__dirname + '/app'));                 // set the static f
 //app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 //app.use(methodOverride());
 
+app.use(function (request, response, next) {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();      
+}); 
+
 
  var Characters = mongoose.model('Characters', {
         text : String
@@ -40,7 +46,7 @@ app.get('*', function(request, response) {
     
 
 // LISTENING
-var port = 8080;
+var port = 9000;
 app.listen(port);
 console.log("App listening on port " + port);
 

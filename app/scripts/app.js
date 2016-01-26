@@ -31,25 +31,24 @@
 
 travelogueApp.controller('mainCtrl', function($scope, $http){
 
-$http({
+/*$http({
   method: 'GET',
-  url: 'http://localhost/characters'
+  url: 'http://localhost:8080/characters'
 }).then(function successCallback(response) {
        console.log(response.status, response.statusText);
     $scope.data = response.data;
   }, function errorCallback(response) {
       console.error(response.status, response.statusText);
   });
-});
+});*/
 
- /*   $http.get('http://localhost:8080/characters')
-        .success(function(data) {
-            $scope.characters = data;
-            console.log(data);
-        })
-        .error(function(data) {
-            console.log('Error: ' + data);
-        });*/
+  $http.jsonp('http://localhost:9000/characters?format=jsonp&callback=JSON_CALLBACK')
+       .then(function successCallback(data) {
+        console.log(data);
+        $scope.data = data;
+        }, function errorCallback(data) {
+      console.error(data);
+  });
 
 $scope.characters = [
     {firstname:'John',lastname:'Lennon',uuid:'0001'},
