@@ -3,9 +3,6 @@ var app      = express();
 
 var mongoose = require('mongoose');                     
 
-//var morgan = require('morgan');             // log requests to the console (express4)
-//var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
-//var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 
 // configuration
 
@@ -22,7 +19,7 @@ app.use(function (request, response, next) {
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();      
-}); 
+});
 
 
  var Characters = mongoose.model('Characters', {
@@ -46,7 +43,7 @@ app.get('*', function(request, response) {
     
 
 // LISTENING
-var port = 9000;
+var port = 8080;
 app.listen(port);
 console.log("App listening on port " + port);
 
