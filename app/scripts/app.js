@@ -29,7 +29,27 @@
             
     });
 
-travelogueApp.controller('mainCtrl', function($scope){
+travelogueApp.controller('mainCtrl', function($scope, $http){
+
+$http({
+  method: 'GET',
+  url: 'http://localhost/characters'
+}).then(function successCallback(response) {
+       console.log(response.status, response.statusText);
+    $scope.data = response.data;
+  }, function errorCallback(response) {
+      console.error(response.status, response.statusText);
+  });
+});
+
+ /*   $http.get('http://localhost:8080/characters')
+        .success(function(data) {
+            $scope.characters = data;
+            console.log(data);
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });*/
 
 $scope.characters = [
     {firstname:'John',lastname:'Lennon',uuid:'0001'},

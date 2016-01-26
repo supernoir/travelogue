@@ -9,10 +9,9 @@ var mongoose = require('mongoose');
 
 // configuration
 
-mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');
-// connect to mongoDB database on modulus.io
+mongoose.connect('mongodb://localhost/library');
 
-app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/app'));                 // set the static files location /public/img will be /img for users
 //app.use(morgan('dev'));                                         // log every request to the console
 //app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
 //app.use(bodyParser.json());                                     // parse application/json
@@ -20,9 +19,28 @@ app.use(express.static(__dirname + '/public'));                 // set the stati
 //app.use(methodOverride());
 
 
-app.listen(8080);
-console.log("App listening on port 8080");
-
-app.get('*', function(req, res) {
-        res.sendfile('./app/index.html');
+ var Characters = mongoose.model('Characters', {
+        text : String
     });
+
+app.get('/characters', function(request, response) {
+        Characters.find(function(error, characters) {
+
+            if (error)
+                response.send(error)
+
+            response.json(characters);
+        });
+    });
+
+
+app.get('*', function(request, response) {
+        response.sendfile('./index.html');
+    });
+    
+
+// LISTENING
+var port = 8080;
+app.listen(port);
+console.log("App listening on port " + port);
+

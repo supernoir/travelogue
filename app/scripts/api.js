@@ -11,10 +11,9 @@ $http({
   method: 'GET',
   url: 'http://localhost:9000/json/characters.json'
 }).then(function successCallback(response) {
- //   console.log(response);
-       console.log(response.status);
+       console.log(response.status, response.statusText);
     $scope.data = response.data;
   }, function errorCallback(response) {
-      console.error(response.status);
+      console.error(response.status, response.statusText);
   });
 });
