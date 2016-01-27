@@ -34,7 +34,14 @@ app.get('/characters', function(request, response) {
         });
     });
 
-app.post('characters')
+app.post('/characters', function(request, response){
+    // get data from ng-submit function
+    // post to api
+    // receive response
+    // or handle error
+    
+    // show tick
+});
 
 app.get('*', function(request, response) {
         response.sendfile('./index.html');
