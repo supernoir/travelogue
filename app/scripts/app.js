@@ -41,6 +41,12 @@ $http({
       console.error(response.status, response.statusText);
   });
 
+$http({
+    method: 'POST',
+    url: 'http://localhost:8080/characters'
+}).then(function successCallback(response) {
+    console.log(response.status);
+});
 
     
 $scope.milestones = [

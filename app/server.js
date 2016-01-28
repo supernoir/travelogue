@@ -35,8 +35,9 @@ app.get('/characters', function(request, response) {
     });
 
 app.post('/characters', function(request, response){
-    // get data from ng-submit function
+    // get data from function
     // post to api
+    
     // receive response
     // or handle error
     
