@@ -34,6 +34,10 @@ app.use(function (request, response, next) {
         text : String
     });
 
+ var Journeys = mongoose.model('Journeys', {
+        text : String
+    });
+
 app.get('/characters', function(request, response) {
         Characters.find(function(error, characters) {
             if (error)
@@ -41,12 +45,21 @@ app.get('/characters', function(request, response) {
             response.json(characters);
         });
     });
-/*
-app.post('/characters', function(request, response){
-      console.log(request.body);      // your JSON
-  response.send(request.body);    // echo the result back
 
+app.get('/journeys', function(request, response) {
+        Journeys.find(function(error, characters) {
+            if (error)
+                response.send(error)
+            response.json(characters);
+        });
+    });
+
+
+/*app.post('/journeys', function(request, response){
+  console.log(request.body);
+  response.send(request.body);
 });*/
+
 
 app.get('*', function(request, response) {
         response.sendfile('./index.html');
