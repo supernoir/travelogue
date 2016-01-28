@@ -41,13 +41,12 @@ $http({
       console.error(response.status, response.statusText);
   });
 
-$http({
+/* $http({
     method: 'POST',
-    url: 'http://localhost:8080/characters'
+    url: 'http://localhost:8080/journeys'
 }).then(function successCallback(response) {
     console.log(response.status);
-});
-
+}); */
     
 $scope.milestones = [
         {date:'31 July 1980', location:'London, England', event: 'Birthday', cast: 'Harry, Hermione'},

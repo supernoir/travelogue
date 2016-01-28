@@ -1,22 +1,26 @@
+var connect = require('connect');
+var http = require('http');
+
 var express  = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+
+// Logs all HTTP
+var morgan = require('morgan');
+
 var mongoose = require('mongoose');   
 var app      = express();                               
-
-  
-               
-
 
 // configuration
 
 mongoose.connect('mongodb://localhost/library');
+app.use(express.static(__dirname + '/app'));         
 
-app.use(express.static(__dirname + '/app'));                 // set the static files location /public/img will be /img for users
-//app.use(morgan('dev'));                                         // log every request to the console
-app.use(express.bodyParser());
-//app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
-//app.use(bodyParser.json());                                     // parse application/json
-//app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
+app.use(morgan('combined'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+                                   
 //app.use(methodOverride());
 
 app.use(function (request, response, next) {
@@ -37,12 +41,12 @@ app.get('/characters', function(request, response) {
             response.json(characters);
         });
     });
-
+/*
 app.post('/characters', function(request, response){
       console.log(request.body);      // your JSON
   response.send(request.body);    // echo the result back
 
-});
+});*/
 
 app.get('*', function(request, response) {
         response.sendfile('./index.html');
