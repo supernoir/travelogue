@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li><a href="#/">Home</a></li>
+  <li><a href="#/">Journeys</a></li>  
+  <li class="active"><a href="#/list_journeys">All Journeys</a></li>
+</ol>
      <div class="panel panel-default" ng-repeat="journey in journeys">
          <div class="panel-heading">
             <p><h2><strong>{{journey.name}}</strong></h2></p>
@@ -11,6 +16,6 @@
         <tbody>
         <tr ng-repeat="milestone in journey.milestones">
         <th scope=row>{{milestone.date}}</th> <td>{{milestone.location}}</td> <td>{{milestone.event}}</td> <!--<td>{{milestone.cast.name}}</td>--> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
-      <button type="submit" class="btn btn-default" ng-click="createMilestone(milestone);">Add Milestone</button>
+      <a href="#/new_milestone"><button type="submit" class="btn btn-default" ng-click="createMilestone(milestone);">Add Milestone</button></a>
      </div>
      </div>
