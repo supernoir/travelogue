@@ -1,15 +1,16 @@
      <div class="panel panel-default" ng-repeat="journey in journeys">
          <div class="panel-heading">
             <p><h2><strong>{{journey.name}}</strong></h2></p>
-            <p class="lead">Cast: <strong><a href="#">{{journey.cast}}</a></strong> | {{journey.uuid}}</p>
+            <p class="lead">with <strong><a href="#">{{journey.character}}</a></strong></p>
+            <code>ID {{journey._id}}</code>
         </div>
          <div class="panel-body">
            <table class=table>
-        <caption>Where <code>character.name</code> meets with his friend to go on a roadtrip around the USA -- <a href="#">Edit</a></caption>
-        <thead> <tr> <th>Date</th> <th>Location</th> <th>Event</th> <th>Characters</th> <th>Options</th> </tr> </thead>
+        <caption>{{journey.description}}</caption>
+        <thead> <tr> <th>Date</th> <th>Location</th> <th>Event</th> <!--<th>Characters</th>--> <th>Options</th> </tr> </thead>
         <tbody>
-        <tr ng-repeat="milestone in milestones">
-        <th scope=row>{{milestone.date}}</th> <td>{{milestone.location}}</td> <td>{{milestone.event}}</td> <td>{{milestone.cast}}</td> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
+        <tr ng-repeat="milestone in journey.milestones">
+        <th scope=row>{{milestone.date}}</th> <td>{{milestone.location}}</td> <td>{{milestone.event}}</td> <!--<td>{{milestone.cast.name}}</td>--> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
       <button type="submit" class="btn btn-default" ng-click="createMilestone(milestone);">Add Milestone</button>
      </div>
      </div>

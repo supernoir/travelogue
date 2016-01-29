@@ -1,14 +1,13 @@
     <div class="panel panel-default">
          <div class="panel-heading">
             <p><h2>Journeys</h2></p>
-            <p class="lead">All Journeys listed</p>
         </div>
          <div class="panel-body">
         <table class=table>
-        <thead> <tr> <th>ID</th> <th>Journey Name</th> <th>Character</th> <th>Cast</th></tr> </thead>
+        <thead> <tr><th>Journey Name</th> <th>Character</th></tr> </thead>
         <tbody>
         <tr ng-repeat="journey in journeys">
-        <th scope=row>{{journey.uuid}}</th> <td>{{journey.name}}</td> <td><code>Your Character</code></td> <td>{{journey.cast}}</td> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
+<td><a href="#/list_journeys">{{journey.name}}</a></td> <td><a href="#">{{journey.character}}</a></td></tr> </tbody> </table>
       <a href="#/new_journey"><button type="submit" class="btn btn-default">Add Journey</button></a>
      </div>
      </div>
