@@ -1,6 +1,6 @@
 'use strict';
 
-    var travelogueApp = angular.module('travelogueApp', ['ngRoute']);
+    var travelogueApp = angular.module('travelogueApp',['ngRoute','ngResource']);
 
     // configure our routes
     travelogueApp.config(function($routeProvider) {

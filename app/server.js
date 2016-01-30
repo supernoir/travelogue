@@ -24,8 +24,8 @@ app.use(bodyParser.urlencoded({
 //app.use(methodOverride());
 
 app.use(function (request, response, next) {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header("Access-Control-Allow-Headers", "X-Requested-With");
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();      
 });
 
@@ -55,11 +55,10 @@ app.get('/journeys', function(request, response) {
     });
 
 
-/*app.post('/journeys', function(request, response){
+app.post('/journeys', function(request, response){
   console.log(request.body);
   response.send(request.body);
-});*/
-
+});
 
 app.get('*', function(request, response) {
         response.sendfile('./index.html');
