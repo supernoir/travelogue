@@ -51,9 +51,10 @@ $http({
       console.error(response.status, response.statusText);
   });
 
+$scope.newJourney = [];
 
     $scope.submitJourney = function() {
-        $http.post('http://localhost:8080/journeys',$scope.formData).
+        $http.post('http://localhost:8080/journeys',$scope.newJourney).
         success(function(data) {
             console.log("posted successfully");
         }).error(function(data) {

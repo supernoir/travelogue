@@ -31,9 +31,11 @@ app.use(bodyParser.urlencoded({
 
 app.use(function (request, response, next) {
     response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    response.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS");  
   next();      
 });
+
 
 
  var Characters = mongoose.model('Characters', {
@@ -70,12 +72,19 @@ app.post('/journeys', function(request, response) {
 });
 */
 
+app.post("/journeys", function(request, response) {
+    console.log(request.body);
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.end('thanks');    
+});
+
+/*
 app.post('/journeys', function(request, response) {
     console.log('POST /');
 //    console.dir(req.body);
 //    res.writeHead(200, {'Content-Type': 'text/html'});
 //    res.end('thanks');
-});
+});*/
 
 
 
