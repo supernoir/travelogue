@@ -1,6 +1,6 @@
 'use strict';
 
-    var travelogueApp = angular.module('travelogueApp',['ngRoute','ngResource']);
+    var travelogueApp = angular.module('travelogueApp',['ngRoute']);
 
     // configure our routes
     travelogueApp.config(function($routeProvider) {
@@ -52,16 +52,26 @@ $http({
   });
 
 
+    $scope.submitJourney = function() {
+        $http.post('http://localhost:8080/journeys',$scope.formData).
+        success(function(data) {
+            console.log("posted successfully");
+        }).error(function(data) {
+            console.error("error in posting");
+        })
+    }
 
- /*$http.post({
+
+/*
+$http.post({
      method: 'POST',
      url: 'http://localhost:8080/journeys',
      data: {
-         name: "Minnie's Journey",
-         cast: "Mickey Mouse"
+         name: 'Minnies Journey',
+         cast: 'Mickey Mouse'
      }
      }).then(function successCallback(response) {
-       console.log(response.status, "POST JOURNEY: " + response.statusText);
+       console.log(response.status, response.statusText);
   }, function errorCallback(response) {
       console.error(response.status, response.statusText);
   });*/

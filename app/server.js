@@ -4,6 +4,9 @@ var http = require('http');
 var express  = require('express');
 var bodyParser = require('body-parser');
 
+var cors = require("cors");
+
+
 // Logs all HTTP
 var morgan = require('morgan');
 
@@ -20,8 +23,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
                                    
 //app.use(methodOverride());
+
+//app.set('port', 8080);
 
 app.use(function (request, response, next) {
     response.header("Access-Control-Allow-Origin", "*");
@@ -55,10 +61,29 @@ app.get('/journeys', function(request, response) {
     });
 
 
+
+/*
+app.post('/journeys', function(request, response) {
+  console.log(request.body);
+ response.send(request.body);
+    response.end();
+});
+*/
+
+app.post('/journeys', function(request, response) {
+    console.log('POST /');
+//    console.dir(req.body);
+//    res.writeHead(200, {'Content-Type': 'text/html'});
+//    res.end('thanks');
+});
+
+
+
+/*
 app.post('/journeys', function(request, response){
   console.log(request.body);
-  response.send(request.body);
-});
+//  response.send(request.body);
+});*/
 
 app.get('*', function(request, response) {
         response.sendfile('./index.html');
