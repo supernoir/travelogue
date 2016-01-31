@@ -51,7 +51,12 @@ $http({
       console.error(response.status, response.statusText);
   });
 
-$scope.newJourney = [];
+
+
+$scope.newJourney = [
+    {name:'The Roadtrip', uuid:'0001',cast:['Finn','Jake']},
+    {name:'The Fellowship', uuid:'0002',cast:['Frodo','Gandalf']}
+    ];
 
     $scope.submitJourney = function() {
         $http.post('http://localhost:8080/journeys',$scope.newJourney).
@@ -63,29 +68,12 @@ $scope.newJourney = [];
     }
 
 
-/*
-$http.post({
-     method: 'POST',
-     url: 'http://localhost:8080/journeys',
-     data: {
-         name: 'Minnies Journey',
-         cast: 'Mickey Mouse'
-     }
-     }).then(function successCallback(response) {
-       console.log(response.status, response.statusText);
-  }, function errorCallback(response) {
-      console.error(response.status, response.statusText);
-  });*/
     
 $scope.milestones = [
         {date:'31 July 1980', location:'London, England', event: 'Birthday', cast: 'Harry, Hermione'},
         {date:'22 October 1979', location:'Pune, India', event: 'Trip to India', cast: 'Hermione'}
         ];
 
-/*$scope.journeys = [
-    {name:'The Roadtrip', uuid:'0001',cast:['Finn','Jake']},
-    {name:'The Fellowship', uuid:'0002',cast:['Frodo','Gandalf']}
-    ];*/
 
 $scope.createMilestone = function(date,location,event,cast) {
     var newMilestone = new function() {

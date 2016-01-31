@@ -55,25 +55,17 @@ app.get('/characters', function(request, response) {
     });
 
 app.get('/journeys', function(request, response) {
-        Journeys.find(function(error, characters) {
+        Journeys.find(function(error, journeys) {
             if (error)
                 response.send(error)
-            response.json(characters);
+            response.json(journeys);
         });
     });
 
 
 
-/*
-app.post('/journeys', function(request, response) {
-  console.log(request.body);
- response.send(request.body);
-    response.end();
-});
-*/
-
 app.post("/journeys", function(request, response) {
-    console.log(request.body);
+    console.log(JSON.stringify(request.body));
     response.writeHead(200, {'Content-Type': 'text/html'});
     response.end('thanks');    
 });
