@@ -42,6 +42,8 @@ $scope.createMilestone = function(date,location,event,cast) {
         $scope.milestones = $scope.milestones.concat(newMilestone);
     }
 
+
+
 /*$scope.createJourney = function(name,cast,uuid) {
     var newJourney = new function() {
         this.name = $scope.journeynewname;
@@ -73,17 +75,10 @@ $http({
   });
 
 
-$scope.journeyname = "Hallo Welt";
-
-$scope.postJourney = [
-    {name: $scope.journeyname, cast: ["Mickey","Minnie"], character: "David Bowie"}
-    ];
-
-    //{name:'The Roadtrip', uuid:'0001',cast:['Finn','Jake']},
-    //{name:'The Fellowship', uuid:'0002',cast:['Frodo','Gandalf']}
 
     $scope.submitJourney = function() {
-        $http.post('http://localhost:8080/journeys',$scope.postJourney).
+        var data = $scope.journey;  
+        $http.post('http://localhost:8080/journeys', data).
         success(function(data) {
             console.log("posted successfully");
         }).error(function(data) {

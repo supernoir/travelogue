@@ -10,19 +10,25 @@
         <p class="lead">Create a new Journey</p>
            </div>
            <div class="panel-body">
-        <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" name="Journey" ng-submit="submitJourney()">
   <div class="form-group">
-    <label for="journey" class="col-sm-2 control-label">Journey Name</label>
+    <label for="journey" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
-      <input ng-model="journeynewname" ng-bind="journeynewname" type="text" class="form-control" id="journeynewname" placeholder="On the road with Jack Kerouac">
+      <input ng-model="journey.name" ng-bind="journeynewname" type="text" class="form-control" id="journeyname" placeholder="From the Shire to Mordor">
     </div>
   </div>
   <div class="form-group">
     <label for="journey" class="col-sm-2 control-label">Cast</label>
     <div class="col-sm-10">
-      <input ng-model="journeynewcast" type="text" class="form-control" id="journeynewcast" placeholder="John, Paul, George and Ringo">
+      <input ng-model="journey.cast" type="text" class="form-control" id="journeycast" placeholder="Gandalf, Bilbo">
     </div>
-  </div>  
+  </div>
+    <div class="form-group">
+    <label for="journey" class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-10">
+      <input ng-model="journey.description" type="text" class="form-control" id="journeydesc" placeholder="They wish to return the Ring and defeat Sauron">
+    </div>
+  </div> 
   <div class="form-group">
     <label class="col-sm-2 control-label">Connect to Character</label>
     <div class="col-sm-10">
@@ -33,7 +39,7 @@
   </div>
     <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" ng-click="submitJourney(journeynewname);">Create Journey</button><br><br>
+      <button type="submit" class="btn btn-default">Create Journey</button><br><br>
       <small>These are not the droids you are looking for? <a href="#">Find character</a> or <a href="#">Create character.</a></small>
     </div>
   </div>

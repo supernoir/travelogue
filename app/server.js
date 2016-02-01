@@ -43,8 +43,12 @@ app.use(function (request, response, next) {
     });
 
  var Journeys = mongoose.model('Journeys', {
-        text : String
+        name : String,
+        cast : Array,
+        desc : String
     });
+
+   
 
 app.get('/characters', function(request, response) {
         Characters.find(function(error, characters) {
@@ -64,10 +68,21 @@ app.get('/journeys', function(request, response) {
 
 
 
-app.post("/journeys", function(request, response) {
-    console.log(JSON.stringify(request.body));
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    response.end('thanks');    
+app.post("/journeys", function(request, response, next) {
+    var journey = new Journeys();
+        journey.name = request.body.name;
+        journey.cast = request.body.cast;
+        journey.desc = request.body.description;
+
+    journey.save(function(error, journey) {
+        if (error) { return next(error) }
+        response.json({ message: 'Journey added!', data: journey });
+        
+    //    console.log(JSON.stringify(request.body));
+    //    response.writeHead(200, {'Content-Type': 'text/html'});
+    //    response.end('thanks'); 
+       
+    });
 });
 
 /*
