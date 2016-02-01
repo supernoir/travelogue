@@ -31,6 +31,27 @@
 
 travelogueApp.controller('mainCtrl', function($scope, $http){
 
+
+$scope.createMilestone = function(date,location,event,cast) {
+    var newMilestone = new function() {
+        this.date = $scope.newdate;
+        this.location = $scope.newlocation;
+        this.event = $scope.newevent;
+        this.cast = $scope.newcast;
+        }
+        $scope.milestones = $scope.milestones.concat(newMilestone);
+    }
+
+/*$scope.createJourney = function(name,cast,uuid) {
+    var newJourney = new function() {
+        this.name = $scope.journeynewname;
+        this.cast = $scope.journeynewcast;
+        this.uuid = $scope.generateUUID();
+        }
+        $scope.journeys = $scope.journeys.concat(newJourney);
+}*/
+
+
 $http({
   method: 'GET',
   url: 'http://localhost:8080/characters'
@@ -52,14 +73,17 @@ $http({
   });
 
 
+$scope.journeyname = "Hallo Welt";
 
-$scope.newJourney = [
-    {name:'The Roadtrip', uuid:'0001',cast:['Finn','Jake']},
-    {name:'The Fellowship', uuid:'0002',cast:['Frodo','Gandalf']}
+$scope.postJourney = [
+    {name: $scope.journeyname, cast: ["Mickey","Minnie"], character: "David Bowie"}
     ];
 
+    //{name:'The Roadtrip', uuid:'0001',cast:['Finn','Jake']},
+    //{name:'The Fellowship', uuid:'0002',cast:['Frodo','Gandalf']}
+
     $scope.submitJourney = function() {
-        $http.post('http://localhost:8080/journeys',$scope.newJourney).
+        $http.post('http://localhost:8080/journeys',$scope.postJourney).
         success(function(data) {
             console.log("posted successfully");
         }).error(function(data) {
@@ -75,24 +99,7 @@ $scope.milestones = [
         ];
 
 
-$scope.createMilestone = function(date,location,event,cast) {
-    var newMilestone = new function() {
-        this.date = $scope.newdate;
-        this.location = $scope.newlocation;
-        this.event = $scope.newevent;
-        this.cast = $scope.newcast;
-        }
-        $scope.milestones = $scope.milestones.concat(newMilestone);
-    }
 
-$scope.createJourney = function(name,cast,uuid) {
-    var newJourney = new function() {
-        this.name = $scope.journeynewname;
-        this.cast = $scope.journeynewcast;
-        this.uuid = $scope.generateUUID();
-        }
-        $scope.journeys = $scope.journeys.concat(newJourney);
-}
 
 // Generate UUID
 $scope.generateUUID = function(){

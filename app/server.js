@@ -76,15 +76,8 @@ app.post('/journeys', function(request, response) {
 //    console.dir(req.body);
 //    res.writeHead(200, {'Content-Type': 'text/html'});
 //    res.end('thanks');
-});*/
-
-
-
-/*
-app.post('/journeys', function(request, response){
-  console.log(request.body);
-//  response.send(request.body);
-});*/
+});
+*/
 
 app.get('*', function(request, response) {
         response.sendfile('./index.html');
