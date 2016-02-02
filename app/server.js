@@ -24,10 +24,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-                                   
-//app.use(methodOverride());
-
-//app.set('port', 8080);
 
 app.use(function (request, response, next) {
     response.header("Access-Control-Allow-Origin", "*");
@@ -77,22 +73,10 @@ app.post("/journeys", function(request, response, next) {
     journey.save(function(error, journey) {
         if (error) { return next(error) }
         response.json({ message: 'Journey added!', data: journey });
-        
-    //    console.log(JSON.stringify(request.body));
-    //    response.writeHead(200, {'Content-Type': 'text/html'});
-    //    response.end('thanks'); 
        
     });
 });
 
-/*
-app.post('/journeys', function(request, response) {
-    console.log('POST /');
-//    console.dir(req.body);
-//    res.writeHead(200, {'Content-Type': 'text/html'});
-//    res.end('thanks');
-});
-*/
 
 app.get('*', function(request, response) {
         response.sendfile('./index.html');

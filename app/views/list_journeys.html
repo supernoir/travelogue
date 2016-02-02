@@ -6,7 +6,7 @@
      <div class="panel panel-default" ng-repeat="journey in journeys">
          <div class="panel-heading">
             <p><h2><strong>{{journey.name}}</strong></h2></p>
-            <p class="lead">with <strong><a href="#">{{journey.cast}}</a></strong></p>
+            <p class="lead" ng-repeat="cast in journey.cast">with <strong><a href="#">{{cast}}</a></strong></p>
             <code>ID {{journey._id}}</code>
         </div>
          <div class="panel-body">
