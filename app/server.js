@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({
 app.use(function (request, response, next) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    response.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS");  
+    response.header("Access-Control-Allow-Methods", "POST, GET, DELETE, OPTIONS");  
   next();      
 });
 
@@ -75,6 +75,16 @@ app.post("/journeys", function(request, response, next) {
         response.json({ message: 'Journey added!', data: journey });
        
     });
+});
+
+//var journeyRoute = router.route('/journey_id');
+
+app.delete("/journeys", function(request, response) {
+    Journeys.findByIdAndRemove(request.params.journey_id, function(error, journeys) {
+    if (error)
+        response.send(error)
+    response.json(journeys);
+  });
 });
 
 

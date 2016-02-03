@@ -44,15 +44,6 @@ $scope.createMilestone = function(date,location,event,cast) {
 
 
 
-/*$scope.createJourney = function(name,cast,uuid) {
-    var newJourney = new function() {
-        this.name = $scope.journeynewname;
-        this.cast = $scope.journeynewcast;
-        this.uuid = $scope.generateUUID();
-        }
-        $scope.journeys = $scope.journeys.concat(newJourney);
-}*/
-
 
 $http({
   method: 'GET',
@@ -87,6 +78,20 @@ $http({
         $location.path('/list_journeys');
     }
 
+
+
+
+
+    $scope.deleteJourney = function() {
+        var id = $scope.journey._id;  
+        $http.delete('http://localhost:8080/journeys', id).
+        success(function(id) {
+            console.log("deleted successfully");
+        }).error(function(id) {
+            console.error("error in deleting");
+        })
+        //$location.path('/list_journeys');
+    }
 
     
 $scope.milestones = [
