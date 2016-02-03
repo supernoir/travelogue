@@ -6,12 +6,12 @@
      <div class="panel panel-default" ng-repeat="journey in journeys">
          <div class="panel-heading">
             <p><h2><strong>{{journey.name}}</strong></h2></p>
-            <p class="lead" ng-repeat="cast in journey.cast">with <strong><a href="#">{{cast}}</a></strong></p>
+            <p class="lead">with <span ng-repeat="cast in journey.cast"><a href="#/{{cast}}">{{cast}}</a>{{$last ? '' : ($index == cast.length-2) ? ' and ' : ', '}}</span></p>
             <code>ID {{journey._id}}</code>
         </div>
          <div class="panel-body">
            <table class=table>
-        <caption>{{journey.description}}</caption>
+        <caption>{{journey.desc}}</caption>
         <thead> <tr> <th>Date</th> <th>Location</th> <th>Event</th> <!--<th>Characters</th>--> <th>Options</th> </tr> </thead>
         <tbody>
         <tr ng-repeat="milestone in journey.milestones">
