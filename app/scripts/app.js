@@ -3,7 +3,7 @@
     var travelogueApp = angular.module('travelogueApp',['ngRoute']);
 
     // configure our routes
-    travelogueApp.config(function($routeProvider) {
+    travelogueApp.config(function($locationProvider, $routeProvider) {
         $routeProvider
 
             .when('/', {
@@ -25,11 +25,11 @@
                 templateUrl : 'views/new_milestone.html',
                 controller  : 'mainCtrl'
             });
-//            $locationProvider.html5Mode(true);
+            $locationProvider.html5Mode(false);
             
     });
 
-travelogueApp.controller('mainCtrl', function($scope, $http){
+travelogueApp.controller('mainCtrl', function($scope, $http, $location){
 
 
 $scope.createMilestone = function(date,location,event,cast) {
@@ -84,6 +84,7 @@ $http({
         }).error(function(data) {
             console.error("error in posting");
         })
+        $location.path('/list_journeys');
     }
 
 

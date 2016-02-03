@@ -9,11 +9,18 @@
     </div>
     <div class="panel-body">
         <table class=table>
-        <thead> <tr><th>Name</th> <th>Character(s)</th></tr> </thead>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Character(s)</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
         <tbody>
         <tr ng-repeat="journey in journeys">
             <td><a href="#/list_journeys">{{journey.name}}</a></td>
             <td><span ng-repeat="cast in journey.cast"><a href="#/{{cast}}">{{cast}}</a>{{$last ? '' : ($index == cast.length-2) ? ' and ' : ', '}}</span></td>
+            <td><a href="#/edit_{{journey._id}}">Edit</a> | <a href="#/delete_{{journey._id}}">Delete</a></td>
         </tr> </tbody> </table>
       <a href="#/new_journey"><button type="submit" class="btn btn-default">Add Journey</button></a>
      </div>
