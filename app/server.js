@@ -1,20 +1,15 @@
 var connect = require('connect');
 var http = require('http');
-
 var express  = require('express');
 var bodyParser = require('body-parser');
-
 var cors = require("cors");
-
-
-// Logs all HTTP
 var morgan = require('morgan');
-
 var mongoose = require('mongoose');   
-var app      = express();                               
+
+var app      = express();      
+                         
 
 // configuration
-
 mongoose.connect('mongodb://localhost/library');
 app.use(express.static(__dirname + '/app'));         
 

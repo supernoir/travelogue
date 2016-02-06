@@ -44,7 +44,6 @@ $scope.createMilestone = function(date,location,event,cast) {
 
 
 
-
 $http({
   method: 'GET',
   url: 'http://localhost:8080/characters'
@@ -66,19 +65,17 @@ $http({
   });
 
 
+$scope.submitJourney = function() {
+    var data = $scope.journey;  
 
-    $scope.submitJourney = function() {
-        var data = $scope.journey;  
-        $http.post('http://localhost:8080/journeys', data).
+    $http.post('http://localhost:8080/journeys', data).
         success(function(data) {
             console.log("posted successfully");
         }).error(function(data) {
             console.error("error in posting");
         })
-        $location.path('/list_journeys');
+    $location.path('/list_journeys');
     }
-
-
 
 
 
@@ -99,14 +96,6 @@ $scope.milestones = [
         {date:'22 October 1979', location:'Pune, India', event: 'Trip to India', cast: 'Hermione'}
         ];
 
-
-
-
-// Generate UUID
-$scope.generateUUID = function(){
-    var uuid = Math.random(1000);
-    return uuid;
-}
     
 });
 
