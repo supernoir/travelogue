@@ -39,6 +39,12 @@ app.use(function (request, response, next) {
         desc : String
     });
 
+    var Milestones = mongoose.model('Journey', {
+        name : String,
+        date : Date,
+        location : String,
+        cast : []
+    });
    
 
 app.get('/characters', function(request, response) {
