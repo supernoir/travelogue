@@ -40,6 +40,7 @@ app.use(function (request, response, next) {
     });
 
     var Milestones = mongoose.model('Journey', {
+        journey : String,
         name : String,
         date : Date,
         location : String,
@@ -80,7 +81,7 @@ app.post("/journeys", function(request, response, next) {
 
 
 app.post("/delete_journey", function(request, response, next) {
-    console.log(request.body._id);
+    //console.log(request.body._id);
     Journeys.findByIdAndRemove(request.body._id, function(error, journey) {
     if (error)
         response.send(error)
@@ -90,7 +91,7 @@ app.post("/delete_journey", function(request, response, next) {
 
 
 app.get('*', function(request, response) {
-        response.sendfile('./index.html');
+        response.sendFile('./index.html');
     });
     
 

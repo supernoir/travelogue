@@ -65,6 +65,17 @@ $http({
   });
 
 
+/*$http({
+  method: 'GET',
+  url: 'http://localhost:8080/journey'
+}).then(function successCallback(response) {
+       console.log(response.status, "GET JOURNEY: " + response.statusText);
+    $scope.journeys._id = response.data;
+  }, function errorCallback(response) {
+      console.error(response.status, response.statusText);
+  });*/
+
+
 $scope.submitJourney = function() {
     var data = $scope.journey;  
 
