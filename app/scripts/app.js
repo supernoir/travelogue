@@ -77,17 +77,15 @@ $scope.submitJourney = function() {
     $location.path('/list_journeys');
     }
 
-
-
-    $scope.deleteJourney = function() {
-        var id = $scope.journey._id;  
-        $http.delete('http://localhost:8080/journeys', id).
-        success(function(id) {
+    $scope.deleteJourney = function(id) {
+        var data = { _id : id };  
+        $http.post('http://localhost:8080/delete_journey', data).
+        success(function(data) {
+            console.log(data)
             console.log("deleted successfully");
-        }).error(function(id) {
+        }).error(function(data) {
             console.error("error in deleting");
         })
-        //$location.path('/list_journeys');
     }
 
     

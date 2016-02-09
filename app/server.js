@@ -6,7 +6,7 @@ var cors = require("cors");
 var morgan = require('morgan');
 var mongoose = require('mongoose');   
 
-var app      = express();      
+var app = express();      
                          
 
 // configuration
@@ -78,13 +78,13 @@ app.post("/journeys", function(request, response, next) {
     });
 });
 
-//var journeyRoute = router.route('/journey_id');
 
-app.delete("/journeys", function(request, response) {
-    Journeys.findByIdAndRemove(request.params.journey_id, function(error, journeys) {
+app.post("/delete_journey", function(request, response, next) {
+    console.log(request.body._id);
+    Journeys.findByIdAndRemove(request.body._id, function(error, journey) {
     if (error)
         response.send(error)
-    response.json(journeys);
+    response.json({ message: 'Journey deleted!', data: journey });
   });
 });
 
