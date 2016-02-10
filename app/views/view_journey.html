@@ -1,19 +1,19 @@
 <ol class="breadcrumb">
   <li><a href="#/">Journeys</a></li>  
-  <li class="active"><a href="#/list_journeys"><code>{{journey.name}}</code></a></li>
+  <li class="active"><a href="#/list_journeys" ng-bind="journeys[1].name"></a></li>
 </ol>
-     <div class="panel panel-default" ng-repeat="journey in journeys">
+     <div class="panel panel-default">
          <div class="panel-heading">
-            <p><h2><strong>{{journey.name}}</strong></h2></p>
-            <p class="lead">with <span ng-repeat="cast in journey.cast"><a href="#/{{cast}}">{{cast}}</a>{{$last ? '' : ($index == cast.length-2) ? ' and ' : ', '}}</span></p>
-            <code>ID {{journey._id}}</code>
+            <h2 ng-bind="journeys[1].name"></h2>
+            <p class="lead">with <span ng-repeat="cast in journeys[1].cast"><a href="#/{{cast}}">{{cast}}</a>{{$last ? '' : ($index == cast.length-2) ? ' and ' : ', '}}</span></p>
+            <code>ID <span ng-bind="journeys[1]._id"></span></code>
         </div>
          <div class="panel-body">
            <table class=table>
-        <caption>{{journey.desc}}</caption>
+        <caption>{{journeys[1].desc}}</caption>
         <thead> <tr> <th>Date</th> <th>Location</th> <th>Event</th> <!--<th>Characters</th>--> <th>Options</th> </tr> </thead>
         <tbody>
-        <tr ng-repeat="milestone in journey.milestones">
+        <tr ng-repeat="milestone in journeys[1].milestones">
         <th scope=row>{{milestone.date}}</th> <td>{{milestone.location}}</td> <td>{{milestone.event}}</td> <!--<td>{{milestone.cast.name}}</td>--> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
       <a href="#/new_milestone"><button type="submit" class="btn btn-default" ng-click="createMilestone(milestone);">Add Milestone</button></a>
      </div>
