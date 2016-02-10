@@ -2,7 +2,6 @@
 
     var travelogueApp = angular.module('travelogueApp',['ngRoute']);
 
-    // configure our routes
     travelogueApp.config(function($locationProvider, $routeProvider) {
         $routeProvider
 
@@ -43,6 +42,9 @@ $scope.createMilestone = function(date,location,event,cast) {
     }
 
 
+// -----------------------------------------------------------------------------  
+//  REST API
+// -----------------------------------------------------------------------------
 
 $http({
   method: 'GET',
@@ -54,6 +56,7 @@ $http({
       console.error(response.status, response.statusText);
   });
 
+
 $http({
   method: 'GET',
   url: 'http://localhost:8080/journeys'
@@ -63,17 +66,6 @@ $http({
   }, function errorCallback(response) {
       console.error(response.status, response.statusText);
   });
-
-
-/*$http({
-  method: 'GET',
-  url: 'http://localhost:8080/journey'
-}).then(function successCallback(response) {
-       console.log(response.status, "GET JOURNEY: " + response.statusText);
-    $scope.journeys._id = response.data;
-  }, function errorCallback(response) {
-      console.error(response.status, response.statusText);
-  });*/
 
 
 $scope.submitJourney = function() {

@@ -28,18 +28,19 @@ app.use(function (request, response, next) {
 });
 
 
+ // Mongoose Models
 
- var Characters = mongoose.model('Characters', {
+var Characters = mongoose.model('Characters', {
         text : String
     });
 
- var Journeys = mongoose.model('Journeys', {
+var Journeys = mongoose.model('Journeys', {
         name : String,
         cast : Array,
         desc : String
     });
 
-    var Milestones = mongoose.model('Journey', {
+var Milestones = mongoose.model('Journey', {
         journey : String,
         name : String,
         date : Date,
