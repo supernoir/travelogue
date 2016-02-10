@@ -1,6 +1,16 @@
 'use strict';
 
+// -----------------------------------------------------------------------------  
+//  APP SETUP
+// -----------------------------------------------------------------------------
+
     var travelogueApp = angular.module('travelogueApp',['ngRoute']);
+
+// -----------------------------------------------------------------------------  
+//  ROUTING
+// -----------------------------------------------------------------------------
+
+
 
     travelogueApp.config(function($locationProvider, $routeProvider) {
         $routeProvider
@@ -12,6 +22,11 @@
 
             .when('/list_journeys', {
                 templateUrl : 'views/list_journeys.html',
+                controller  : 'mainCtrl'
+            })
+
+            .when('/view_journey', {
+                templateUrl : 'views/view_journey.html',
                 controller  : 'mainCtrl'
             })
 
@@ -27,6 +42,11 @@
             $locationProvider.html5Mode(false);
             
     });
+
+// -----------------------------------------------------------------------------  
+//  MAIN CONTROLLER
+// -----------------------------------------------------------------------------
+
 
 travelogueApp.controller('mainCtrl', function($scope, $http, $location){
 
@@ -45,6 +65,7 @@ $scope.createMilestone = function(date,location,event,cast) {
 // -----------------------------------------------------------------------------  
 //  REST API
 // -----------------------------------------------------------------------------
+
 
 $http({
   method: 'GET',

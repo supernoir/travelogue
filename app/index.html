@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--<link rel="stylesheet" href="styles/main.css">-->
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="../bower_components/bootstrap-theme-bootswatch-flatly/css/bootstrap.css">
    <!-- <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">-->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -18,10 +18,12 @@
     <script src="scripts/app.js"></script>
   </head>
   
-  <body ng-app="travelogueApp" style="padding-top:70px;" >
-    <div class="container" ng-controller="mainCtrl">
+  <body ng-app="travelogueApp">
+  
+  <!-- Main Controller -->    
+  <div class="container" ng-controller="mainCtrl">
 
-
+<!-- Main Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -37,31 +39,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="http://localhost:4567/"><span class="glyphicon glyphicon glyphicon-user"></span> Characters</a></li>
+        <li><a href="#/ensemble"><span class="glyphicon glyphicon glyphicon-user"></span> Ensemble</a></li>
         <li class="active"><a href="#/"><span class="glyphicon glyphicon glyphicon-globe"></span> Journeys</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon glyphicon-calendar"></span> Timeline</a></li>
+        <li><a href="#/timeline"><span class="glyphicon glyphicon glyphicon-calendar"></span> Timeline</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-
-        <div class="header clearfix">
-           <h1><small><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></small> Journeys</h1>
-           <hr />
-        </div>
+      <!-- VIEWS -->
+	  <div ng-view><!-- Render views --></div>
 
 
-<div ng-view><!-- VIEWS are displayed here --></div>
-
+      <!-- FOOTER -->
       <div class="footer">
-        <p align="center"><span class="glyphicon glyphicon-heart"></span>&copy; 2016</p>
+        <p align="center"><a href="https://github.com/supernoir/travelogue"><span class="glyphicon glyphicon-heart"></span></a></p>
       </div>
 
     </div>
-
-
-
 
   </body>
 </html>

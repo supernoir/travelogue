@@ -13,7 +13,7 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
+  padding-top: 70px;
   padding-bottom: 20px;
 }
 
@@ -53,6 +53,16 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  color: rgba(255,255,255,0.8) !important;
+  
+  /* Shamelessly hijacking the jumbotron */
+    background: url('../public/img/photo-1448518184296-a22facb4446f.jpg');
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    
   .btn {
     font-size: 21px;
     padding: 14px 24px;
@@ -90,4 +100,15 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+
+.jumbotron .journeys {
+
+    
+}
+
+h1.jumbo_head {
+    color: #fff;
+    
 }
