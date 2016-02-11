@@ -19,7 +19,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="journey in journeys">
-            <td><a href="#/journey_{{journey._id}}">{{journey.name}}</a></td>
+            <td><a href="#/view_journey" ng-click="viewJourneybyId(journey._id)">{{journey.name}}</a></td>
             <td><span ng-repeat="cast in journey.cast"><a href="#/{{cast}}">{{cast}}</a>{{$last ? '' : ($index == cast.length-2) ? ' and ' : ', '}}</span></td>
             <td><a href="#/edit_{{journey._id}}">Edit</a> | <a ng-click="deleteJourney(journey._id)" ng-href="#/delete_journey">Delete</a></td>
         </tr> </tbody> </table>

@@ -118,7 +118,15 @@ $scope.milestones = [
         {date:'22 October 1979', location:'Pune, India', event: 'Trip to India', cast: 'Hermione'}
         ];
 
-            
+    $scope.viewJourneybyId = function(id) {
+        var viewById = id
+
+
+
+        
+        console.log("This is: " + viewById);
+        return id;
+    }    
 
     
 });
