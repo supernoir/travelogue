@@ -124,16 +124,15 @@ $scope.milestones = [
         var selectOne = { _id : id };
         $http.post('http://localhost:8080/view_journey', selectOne).
         success(function(data) {
-            
-            console.log(data.selection);
-	        return $scope.selection = data.selection; 
+	        $scope.selection = data;
+            $scope.$apply();
             console.log("POST found the right Journey");
+            console.log($scope.selection);
         }).error(function(data) {
             console.error("POST encountered an error");
-        })
-	    
-        
-    }    
+        })    
+    }  
+   
 
     
 });
