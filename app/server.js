@@ -90,6 +90,14 @@ app.post("/delete_journey", function(request, response, next) {
   });
 });
 
+app.post("/view_journey", function(request, response, next) {
+    
+    Journeys.findById(request.body._id, function(error, selection) {
+    if (error)
+        response.send(error)
+    response.json({ message: 'Journey found!', selection });
+  });
+});
 
 app.get('*', function(request, response) {
         response.sendFile('./index.html');

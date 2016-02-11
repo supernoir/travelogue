@@ -12,7 +12,7 @@
 
 
 
-    travelogueApp.config(function($locationProvider, $routeProvider) {
+    travelogueApp.config(function($locationProvider, $routeProvider, $httpProvider) {
         $routeProvider
 
             .when('/', {
@@ -41,6 +41,7 @@
             });
             $locationProvider.html5Mode(false);
             
+            //$httpProvider.useApplyAsync(true);
     });
 
 // -----------------------------------------------------------------------------  
@@ -89,6 +90,7 @@ $http({
   });
 
 
+
 $scope.submitJourney = function() {
     var data = $scope.journey;  
 
@@ -119,13 +121,18 @@ $scope.milestones = [
         ];
 
     $scope.viewJourneybyId = function(id) {
-        var viewById = id
-
-
-
+        var selectOne = { _id : id };
+        $http.post('http://localhost:8080/view_journey', selectOne).
+        success(function(data) {
+            
+            console.log(data.selection);
+	        return $scope.selection = data.selection; 
+            console.log("POST found the right Journey");
+        }).error(function(data) {
+            console.error("POST encountered an error");
+        })
+	    
         
-        console.log("This is: " + viewById);
-        return id;
     }    
 
     
