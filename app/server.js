@@ -40,7 +40,7 @@ var Journeys = mongoose.model('Journeys', {
         desc : String
     });
 
-var Milestones = mongoose.model('Journey', {
+var Milestones = mongoose.model('Milestones', {
         journey : String,
         name : String,
         date : Date,
@@ -65,6 +65,13 @@ app.get('/journeys', function(request, response) {
         });
     });
 
+app.get('/milestones', function(request, response) {
+        Milestones.find(function(error, milestones) {
+            if (error)
+                response.send(error)
+            response.json(milestones);
+        });
+    });
 
 
 app.post("/journeys", function(request, response, next) {
@@ -80,6 +87,21 @@ app.post("/journeys", function(request, response, next) {
     });
 });
 
+app.post("/milestones", function(request, response, next) {
+    var milestone = new Milestones();
+        milestone.journey = request.body.journey;
+        milestone.name = request.body.name;
+        milestone.date = request.body.date;
+        milestone.location = request.body.location;
+        milestone.cast = request.body.cast;
+        
+
+    milestone.save(function(error, milestone) {
+        if (error) { return next(error) }
+        response.json({ message: 'Milestone added!', data: milestone });
+       
+    });
+});
 
 app.post("/delete_journey", function(request, response, next) {
     //console.log(request.body._id);

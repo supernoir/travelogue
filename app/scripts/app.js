@@ -52,16 +52,6 @@
 travelogueApp.controller('mainCtrl', function($scope, $http, $location){
 
 
-$scope.createMilestone = function(date,location,event,cast) {
-    var newMilestone = new function() {
-        this.date = $scope.newdate;
-        this.location = $scope.newlocation;
-        this.event = $scope.newevent;
-        this.cast = $scope.newcast;
-        }
-        $scope.milestones = $scope.milestones.concat(newMilestone);
-    }
-
 
 // -----------------------------------------------------------------------------  
 //  REST API
@@ -89,6 +79,15 @@ $http({
       console.error(response.status, response.statusText);
   });
 
+$http({
+  method: 'GET',
+  url: 'http://localhost:8080/milestones'
+}).then(function successCallback(response) {
+       console.log(response.status, "GET MILESTONES: " + response.statusText);
+    $scope.milestones = response.data;
+  }, function errorCallback(response) {
+      console.error(response.status, response.statusText);
+  });
 
 
 $scope.submitJourney = function() {
@@ -114,11 +113,18 @@ $scope.submitJourney = function() {
         })
     }
 
+$scope.submitMilestone = function() {
+    var data = $scope.milestone;  
+
+    $http.post('http://localhost:8080/milestones', data).
+        success(function(data) {
+            console.log("posted successfully");
+        }).error(function(data) {
+            console.error("error in posting");
+        })
+    //$location.path('/list_journeys');
+    }
     
-$scope.milestones = [
-        {date:'31 July 1980', location:'London, England', event: 'Birthday', cast: 'Harry, Hermione'},
-        {date:'22 October 1979', location:'Pune, India', event: 'Trip to India', cast: 'Hermione'}
-        ];
 
     $scope.viewJourneybyId = function(id) {
         var selectOne = { _id : id };
