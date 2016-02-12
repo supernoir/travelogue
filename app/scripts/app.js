@@ -45,12 +45,24 @@
     });
 
 // -----------------------------------------------------------------------------  
+//  JOURNEY FACTORY
+// -----------------------------------------------------------------------------
+
+    travelogueApp.factory('journeyFactory',function() {
+        return {
+            selected: null,
+            journeys: []
+        };
+    });  
+
+// -----------------------------------------------------------------------------  
 //  MAIN CONTROLLER
 // -----------------------------------------------------------------------------
 
 
-travelogueApp.controller('mainCtrl', function($scope, $http, $location){
-
+travelogueApp.controller('mainCtrl', function($scope, $http, $location, journeyFactory){
+ 
+$scope.factory = journeyFactory;
 
 
 // -----------------------------------------------------------------------------  
@@ -125,19 +137,20 @@ $scope.submitMilestone = function() {
     //$location.path('/list_journeys');
     }
     
-
+    
+    
     $scope.viewJourneybyId = function(id) {
         var selectOne = { _id : id };
-        $http.post('http://localhost:8080/view_journey', selectOne).
-        success(function(data) {
-	        $scope.selection = data;
-            $scope.$apply();
-            console.log("POST found the right Journey");
-            console.log($scope.selection);
-        }).error(function(data) {
-            console.error("POST encountered an error");
-        })    
-    }  
+        $http.post('http://localhost:8080/view_journey', selectOne)
+            .success(function(data) {
+                $scope.factory.selection = data;
+                console.log("POST found the right Journey");
+                console.log($scope.factory.selection);
+            })
+            .error(function(data) {
+                console.error("POST encountered an error");
+            })    
+        } 
    
 
     
