@@ -64,7 +64,6 @@
 
 travelogueApp.controller('mainCtrl', ['$scope','$http','$location','journeyFactory', function ($scope, $http, $location, journeyFactory) {
 
- 
 $scope.factory = journeyFactory;
 
 
@@ -153,11 +152,8 @@ $scope.submitMilestone = function() {
             .error(function(data) {
                 console.error("POST encountered an error");
             })
-
                 $location.path('/view_journey'); 
         } 
-   
-
     
 }]);
 
