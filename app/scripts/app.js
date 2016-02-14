@@ -35,6 +35,11 @@
                 controller  : 'mainCtrl'
             })
 
+            .when('/edit_journey', {
+                templateUrl : 'views/edit_journey.html',
+                controller  : 'mainCtrl'
+            })
+
             .when('/new_milestone', {
                 templateUrl : 'views/new_milestone.html',
                 controller  : 'mainCtrl'
@@ -50,7 +55,8 @@
 
     travelogueApp.factory('journeyFactory',function() {
         return {
-            selected: null,
+
+            selection: null,
             journeys: []
         };
     });  
@@ -59,8 +65,8 @@
 //  MAIN CONTROLLER
 // -----------------------------------------------------------------------------
 
+travelogueApp.controller('mainCtrl', ['$scope','$http','$location','journeyFactory', function ($scope, $http, $location, journeyFactory) {
 
-travelogueApp.controller('mainCtrl', function($scope, $http, $location, journeyFactory){
  
 $scope.factory = journeyFactory;
 
@@ -154,5 +160,5 @@ $scope.submitMilestone = function() {
    
 
     
-});
+}]);
 
