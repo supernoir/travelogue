@@ -1,11 +1,11 @@
 <ol class="breadcrumb">
   <li><a href="#/">Journeys</a></li>  
-  <li class="active"><a href="#/list_journeys" ng-bind="factory.selection.name"></a></li>
+  <li class="active"><a href="#/list_journeys">{{factory.selection.name}}</a></li>
 </ol>
      <div class="panel panel-default">
          <div class="panel-heading">
-            <h2 ng-bind="factory.selection.name"></h2>
-            <p class="lead">with <span ng-repeat="cast in factory.selection.casts"><a href="#/{{cast}}">{{cast}}</a>{{$last ? '' : ($index == cast.length-2) ? ' and ' : ', '}}</span></p>
+            <h2>{{factory.selection.name}}</h2>
+            <p class="lead">with <span ng-repeat="cast in factory.selection.cast"><a href="#/{{cast}}">{{cast}}</a>{{$last ? '' : ($index == cast.length-2) ? ' and ' : ', '}}</span></p>
             <code>ID <span ng-bind="factory.selection._id"></span></code>
         </div>
          <div class="panel-body">
@@ -14,7 +14,7 @@
         <thead> <tr> <th>Date</th> <th>Location</th> <th>Event</th> <!--<th>Characters</th>--> <th>Options</th> </tr> </thead>
         <tbody>
         <tr ng-repeat="milestone in factory.selection.milestones">
-        <th scope=row>{{factory.milestone.date}}</th> <td>{{factory.milestone.location}}</td> <td>{{factory.milestone.event}}</td> <!--<td>{{milestone.cast.name}}</td>--> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
+        <th scope=row>{{factory.selection.milestone.date}}</th> <td>{{factory.selection.milestone.location}}</td> <td>{{factory.selection.milestone.event}}</td> <!--<td>{{milestone.cast.name}}</td>--> <td><a href="#">Edit</a> / <a href="#">Delete</a></td> </tr> </tbody> </table>
       <a href="#/new_milestone"><button type="submit" class="btn btn-default" ng-click="createMilestone(milestone);">Add Milestone</button></a>
      </div>
      </div>

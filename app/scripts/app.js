@@ -55,9 +55,6 @@
 
     travelogueApp.factory('journeyFactory',function() {
         return {
-
-            selection: null,
-            journeys: []
         };
     });  
 
@@ -149,13 +146,15 @@ $scope.submitMilestone = function() {
         var selectOne = { _id : id };
         $http.post('http://localhost:8080/view_journey', selectOne)
             .success(function(data) {
-                $scope.factory.selection = data;
                 console.log("POST found the right Journey");
+                $scope.factory.selection = data;
                 console.log($scope.factory.selection);
             })
             .error(function(data) {
                 console.error("POST encountered an error");
-            })    
+            })
+
+                $location.path('/view_journey'); 
         } 
    
 

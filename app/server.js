@@ -104,7 +104,7 @@ app.post("/milestones", function(request, response, next) {
 });
 
 app.post("/delete_journey", function(request, response, next) {
-    //console.log(request.body._id);
+
     Journeys.findByIdAndRemove(request.body._id, function(error, journey) {
     if (error)
         response.send(error)
@@ -116,7 +116,7 @@ app.post("/view_journey", function(request, response, next) {
     Journeys.findById(request.body._id, function(error, selection) {
     if (error)
         response.send(error)
-    response.json({ message: 'Journey found!', selection });
+    response.json(selection);
   });
 });
 
