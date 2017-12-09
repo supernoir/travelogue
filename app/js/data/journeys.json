@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "name": "New York to Boston",
+    "img": "nicolai-berntsen-9244.jpg",
+    "journey": [
+      {
+        "id": 1,
+        "station": "New York City",
+        "date": "October 2nd, 1988"
+      },
+      {
+        "id": 2,
+        "station": "New Haven",
+        "date": "October 3nd, 1988"
+      },
+      {
+        "id": 3,
+        "station": "Martha's Vineyard",
+        "date": "October 4nd, 1988"
+      },
+      {
+        "id": 4,
+        "station": "Boston",
+        "date": "October 4nd, 1988"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Vienna to Istanbul",
+    "img": "jack-anstey-383370.jpg",
+    "journey": [
+      {
+        "id": 1,
+        "station": "Vienna Central Station",
+        "date": "February 17, 1897"
+      },
+      {
+        "id": 2,
+        "station": "Budapest Szegeti",
+        "date": "February 18, 1897"
+      },
+      {
+        "id": 3,
+        "station": "Sarajevo Station",
+        "date": "February 21, 1897"
+      },
+      {
+        "id": 4,
+        "station": "Thessaloniki",
+        "date": "February 25, 1897"
+      },
+      {
+        "id": 5,
+        "station": "Istanbul",
+        "date": "February 28, 1897"
+      }
+    ]
+  }
+]

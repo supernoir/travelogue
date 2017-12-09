@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import NotFound from './NotFound';
 import JourneList from './journey/JourneyList';
