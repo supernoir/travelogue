@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class App extends React.Component {
+import App from './components/App';
+
+export default class Index extends React.Component {
   render() {
-    return <div><h1>Travelogue</h1></div>;
+    return <div><App /></div>;
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Index />, document.getElementById('app'));
