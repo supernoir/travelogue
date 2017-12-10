@@ -4,7 +4,8 @@ import Header from './Header';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import NotFound from './NotFound';
-import JourneList from './journey/JourneyList';
+import JourneyList from './journey/JourneyList';
+import SingleJourney from './journey/SingleJourney';
 
 export default class App extends React.Component {
   render() {
@@ -15,7 +16,8 @@ export default class App extends React.Component {
             <Header />
             <Route path="/" component={Dashboard} />
             <Route path="/404*" component={NotFound} />
-            <Route path="/journeys" component={JourneList} />
+            <Route path="/journeys" component={JourneyList} />
+            <Route path="/single" component={SingleJourney} />
           </main>
         </Router>
       </div>
