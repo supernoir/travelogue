@@ -1,6 +1,6 @@
-import React from 'react';
-
-import CardImg from '../../public/jack-anstey-383370.jpg';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import CardImg from '../../public/jack-anstey-383370.jpg'
 
 export default class Card extends React.Component {
   render() {
@@ -20,9 +20,14 @@ export default class Card extends React.Component {
           {this.props.body}
         </div>
         <div className="card-footer">
-          <button className="btn btn-primary">{this.props.cta}</button>
+          <Link
+            to={`/journeys/${this.props.title}`}
+            className="btn btn-primary"
+          >
+            {this.props.cta}
+          </Link>
         </div>
       </div>
-    );
+    )
   }
 }

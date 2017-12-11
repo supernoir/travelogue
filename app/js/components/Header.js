@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Header extends React.Component {
   render() {
@@ -14,6 +14,6 @@ export default class Header extends React.Component {
           <a href="#" className="btn btn-link">Johnny Appleseed</a>
         </section>
       </header>
-    );
+    )
   }
 }

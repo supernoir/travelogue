@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default class TimelineNode extends React.Component {
   render() {
@@ -20,6 +20,6 @@ export default class TimelineNode extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

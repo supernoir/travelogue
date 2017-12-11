@@ -1,7 +1,7 @@
-import React from 'react';
-
-import Card from '../Card';
-import journeydata from '../../data/journeys.json';
+import React from 'react'
+import Header from '../Header'
+import Card from '../Card'
+import journeydata from '../../data/journeys.json'
 
 export default class JourneyList extends React.Component {
   render() {
@@ -21,11 +21,11 @@ export default class JourneyList extends React.Component {
                   cta={'View Journey'}
                 />
               </div>
-            );
+            )
           })}
         </div>
 
       </div>
-    );
+    )
   }
 }
