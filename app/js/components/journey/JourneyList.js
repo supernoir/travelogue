@@ -1,22 +1,27 @@
-import React from 'react'
-import Header from '../Header'
-import Card from '../Card'
-import journeydata from '../../data/journeys.json'
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import Header from '../Header';
+import Card from '../Card';
+import journeydata from '../../data/journeys.json';
 
 export default class JourneyList extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
       journeyName: '',
       journeyDesc: '',
       journeyCast: ''
-    }
+    };
   }
   componentDidMount() {}
   render() {
     return (
       <div className="container">
         <h1>JourneyList</h1>
+        <Link to="/journey/new" className="btn btn-primary btn-lg">
+          New Journey
+        </Link>
         <div className="columns">
           {journeydata.map(journey => {
             return (
@@ -30,11 +35,11 @@ export default class JourneyList extends React.Component {
                   cta={'View Journey'}
                 />
               </div>
-            )
+            );
           })}
         </div>
 
       </div>
-    )
+    );
   }
 }

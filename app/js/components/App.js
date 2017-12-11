@@ -1,9 +1,10 @@
-import React from 'react'
-import { HashRouter as Router, Route } from 'react-router-dom'
-import Dashboard from './Dashboard'
-import NotFound from './NotFound'
-import JourneyList from './journey/JourneyList'
-import SingleJourney from './journey/SingleJourney'
+import React from 'react';
+import { HashRouter as Router, Route } from 'react-router-dom';
+import Dashboard from './Dashboard';
+import NotFound from './NotFound';
+import JourneyList from './journey/JourneyList';
+import SingleJourney from './journey/SingleJourney';
+import NewJourney from './journey/NewJourney';
 
 export default class App extends React.Component {
   render() {
@@ -18,9 +19,10 @@ export default class App extends React.Component {
               path="/journeys/:journey"
               render={props => <SingleJourney {...props} />}
             />
+            <Route exact path="/journey/new" component={NewJourney} />
           </main>
         </Router>
       </div>
-    )
+    );
   }
 }
