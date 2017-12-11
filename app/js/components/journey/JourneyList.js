@@ -4,6 +4,15 @@ import Card from '../Card'
 import journeydata from '../../data/journeys.json'
 
 export default class JourneyList extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      journeyName: '',
+      journeyDesc: '',
+      journeyCast: ''
+    }
+  }
+  componentDidMount() {}
   render() {
     return (
       <div className="container">

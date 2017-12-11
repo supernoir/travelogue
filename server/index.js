@@ -46,6 +46,11 @@ const Milestones = mongoose.model('Journey', {
   cast: []
 })
 
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Please use a descriptive route. See the API documentation for reference'
+  })
+})
 app.get('/characters', (request, response) => {
   Characters.find((error, characters) => {
     if (error) response.send(error)
