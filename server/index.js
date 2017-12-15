@@ -46,8 +46,8 @@ const Milestones = mongoose.model('Journey', {
   cast: []
 });
 
-/** Route: Base Route */
-const routeBase = () => {
+/** REST: Base Route */
+const baseRoute = () => {
   app.get('/', async (req, res) => {
     await res.json({
       message: 'Please use a descriptive route. See the API documentation for reference'
@@ -55,12 +55,18 @@ const routeBase = () => {
   });
 };
 
-app.get('/characters', (request, response) => {
-  Characters.find((error, characters) => {
-    if (error) response.send(error);
-    response.json(characters);
+baseRoute();
+
+/** REST: Characters Route */
+const characterRoute = () => {
+  app.get('/characters', (req, res) => {
+    Characters.find((error, characters) => {
+      if (error) res.send(error);
+      res.json(characters);
+    });
   });
-});
+};
+characterRoute();
 
 app.get('/journeys/all', (request, response) => {
   Journeys.find((error, journeys) => {
