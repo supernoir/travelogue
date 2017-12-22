@@ -68,12 +68,16 @@ const characterRoute = () => {
 };
 characterRoute();
 
-app.get('/journeys/all', (request, response) => {
-  Journeys.find((error, journeys) => {
-    if (error) response.send(error);
-    response.json(journeys);
+/** REST: Journeys Route */
+const journeysRoute = () => {
+  app.get('/journeys/all', async (request, response) => {
+    await Journeys.find((error, journeys) => {
+      if (error) response.send(error);
+      response.json(journeys);
+    });
   });
-});
+};
+journeysRoute();
 
 app.get('/journeys/:name', function(req, res) {
   Journeys.findOne({ name: req.params.name }, function(err, journey) {
