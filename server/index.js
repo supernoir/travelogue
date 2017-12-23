@@ -14,7 +14,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true
+    extended: true,
   })
 );
 
@@ -29,28 +29,29 @@ app.use(function(request, response, next) {
 });
 
 const Characters = mongoose.model('Characters', {
-  text: String
+  text: String,
 });
 
 const Journeys = mongoose.model('Journeys', {
   name: String,
   cast: Array,
-  desc: String
+  desc: String,
 });
 
 const Milestones = mongoose.model('Journey', {
   journey: String,
   name: String,
-  date: Date,
-  location: String,
-  cast: []
+  date: String,
+  desc: String,
+  loc: String,
+  cast: Array,
 });
 
 /** REST: Base Route */
 const baseRoute = () => {
   app.get('/', async (req, res) => {
     await res.json({
-      message: 'Please use a descriptive route. See the API documentation for reference'
+      message: 'Please use a descriptive route. See the API documentation for reference',
     });
   });
 };
@@ -80,8 +81,8 @@ const journeysRoute = () => {
 journeysRoute();
 
 app.get('/journeys/:name', function(req, res) {
-  Journeys.findOne({ name: req.params.name }, function(err, journey) {
-    res.json({ journey });
+  Journeys.findOne({name: req.params.name}, function(err, journey) {
+    res.json({journey});
   });
 });
 
@@ -102,7 +103,7 @@ app.post('/journeys', function(req, res) {
     }
     res.json({
       message: 'Journey added!',
-      data: journey
+      data: journey,
     });
   });
 });
@@ -110,7 +111,48 @@ app.post('/journeys', function(req, res) {
 app.post('/delete_journey', (request, response, next) => {
   Journeys.findByIdAndRemove(request.body._id, (error, journey) => {
     if (error) response.send(error);
-    response.json({ message: 'Journey deleted!', data: journey });
+    response.json({message: 'Journey deleted!', data: journey});
+  });
+});
+
+/** REST: Milestones  Route */
+const milestonesRoute = () => {
+  app.get('/milestones/all', async (request, response) => {
+    await Milestones.find((error, milestones) => {
+      if (error) response.send(error);
+      response.json(milestones);
+    });
+  });
+};
+milestonesRoute();
+
+app.get('/milestones/:name', function(req, res) {
+  Milestones.findOne({name: req.params.name}, function(err, milestone) {
+    res.json({milestone});
+  });
+});
+
+app.post('/milestones/', (req, res) => {
+  const milestoneName = req.param('name');
+  const milestoneJourney = req.param('journey');
+  const milestoneDate = req.param('date');
+  const milestoneDesc = req.param('desc');
+  const milestoneCast = req.param('cast');
+  const milestoneLoc = req.param('loc');
+
+  const milestone = new Milestones();
+  milestone.name = milestoneName;
+  milestone.journey = milestoneJourney;
+  milestone.date = milestoneDate;
+  milestone.desc = milestoneDesc;
+  milestone.cast = milestoneCast;
+  milestone.loc = milestoneLoc;
+
+  milestone.save((err, milestone) => {
+    if (err) {
+      return next(err);
+    }
+    res.json({message: 'Milestone added', data: milestone});
   });
 });
 
@@ -118,3 +160,4 @@ app.post('/delete_journey', (request, response, next) => {
 const port = 8086;
 app.listen(port);
 console.log('App listening on port ' + port);
+
