@@ -6,6 +6,8 @@ import JourneyList from './journey/JourneyList';
 import SingleJourney from './journey/SingleJourney';
 import NewJourney from './journey/NewJourney';
 
+import SingleMilestone from './milestone/SingleMilestone';
+
 export default class App extends React.Component {
   render() {
     return (
@@ -20,6 +22,10 @@ export default class App extends React.Component {
               render={props => <SingleJourney {...props} />}
             />
             <Route exact path="/journey/new" component={NewJourney} />
+            <Route
+              path="/milestones/:milestone"
+              render={props => <SingleMilestone {...props} />}
+            />
           </main>
         </Router>
       </div>
