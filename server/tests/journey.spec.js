@@ -8,6 +8,9 @@ let sampleJourney = new Journey(
   [{ name: 'Vancouver' }, { name: 'Anchorage' }]
 );
 
+sampleJourney.addMilestoneToJourney({ name: 'Berlin' });
+console.log(sampleJourney.getJourneyMilestones());
+
 describe('Journey Class', () => {
   describe('JourneyName', () => {
     it('should be of type string', () => {
@@ -36,6 +39,16 @@ describe('Journey Class', () => {
   describe('JourneyMilestones', () => {
     it('should be of type array', () => {
       expect(sampleJourney.getJourneyMilestones()).to.be.a('Array');
+    });
+  });
+  describe('Add New Milestone to Journey', () => {
+    it('should change the Milestones array length by 1', () => {
+      let previousLength = sampleJourney.getJourneyMilestones().length;
+      let newMilestone = { name: 'Fairbanks' };
+      sampleJourney.addMilestoneToJourney(newMilestone);
+      expect(sampleJourney.getJourneyMilestones().length).to.equal(
+        previousLength + 1
+      );
     });
   });
 });

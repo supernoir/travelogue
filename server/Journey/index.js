@@ -17,6 +17,12 @@ class Journey {
   getJourneyMilestones() {
     return this.journeyMilestones;
   }
+
+  addMilestoneToJourney(newMilestone) {
+    let currentSet = this.journeyMilestones;
+    currentSet.push(newMilestone);
+    this.journeyMilestones = currentSet;
+  }
 }
 
 module.exports = Journey;
