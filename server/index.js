@@ -14,7 +14,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true,
+    extended: true
   })
 );
 
@@ -29,13 +29,13 @@ app.use(function(request, response, next) {
 });
 
 const Characters = mongoose.model('Characters', {
-  text: String,
+  text: String
 });
 
 const Journeys = mongoose.model('Journeys', {
   name: String,
   cast: Array,
-  desc: String,
+  desc: String
 });
 
 const Milestones = mongoose.model('Journey', {
@@ -44,14 +44,14 @@ const Milestones = mongoose.model('Journey', {
   date: String,
   desc: String,
   loc: String,
-  cast: Array,
+  cast: Array
 });
 
 /** REST: Base Route */
 const baseRoute = () => {
   app.get('/', async (req, res) => {
     await res.json({
-      message: 'Please use a descriptive route. See the API documentation for reference',
+      message: 'Please use a descriptive route. See the API documentation for reference'
     });
   });
 };
@@ -69,7 +69,7 @@ const characterRoute = () => {
 };
 characterRoute();
 
-/** REST: Journeys Route */
+/** REST: Journeys - GET all Journeys  */
 const journeysRoute = () => {
   app.get('/journeys/all', async (request, response) => {
     await Journeys.find((error, journeys) => {
@@ -80,12 +80,14 @@ const journeysRoute = () => {
 };
 journeysRoute();
 
+/** REST: Journeys - GET Single Journey by Name */
 app.get('/journeys/:name', function(req, res) {
-  Journeys.findOne({name: req.params.name}, function(err, journey) {
-    res.json({journey});
+  Journeys.findOne({ name: req.params.name }, function(err, journey) {
+    res.json({ journey });
   });
 });
 
+/** REST: Journeys - POST new Journey */
 app.post('/journeys', function(req, res) {
   const journeyName = req.param('name');
   const journeyCast = req.param('cast');
@@ -103,15 +105,16 @@ app.post('/journeys', function(req, res) {
     }
     res.json({
       message: 'Journey added!',
-      data: journey,
+      data: journey
     });
   });
 });
 
+/** REST: Journeys - DELETE Journey */
 app.post('/delete_journey', (request, response, next) => {
   Journeys.findByIdAndRemove(request.body._id, (error, journey) => {
     if (error) response.send(error);
-    response.json({message: 'Journey deleted!', data: journey});
+    response.json({ message: 'Journey deleted!', data: journey });
   });
 });
 
@@ -127,8 +130,8 @@ const milestonesRoute = () => {
 milestonesRoute();
 
 app.get('/milestones/:name', function(req, res) {
-  Milestones.findOne({name: req.params.name}, function(err, milestone) {
-    res.json({milestone});
+  Milestones.findOne({ name: req.params.name }, function(err, milestone) {
+    res.json({ milestone });
   });
 });
 
@@ -152,7 +155,7 @@ app.post('/milestones/', (req, res) => {
     if (err) {
       return next(err);
     }
-    res.json({message: 'Milestone added', data: milestone});
+    res.json({ message: 'Milestone added', data: milestone });
   });
 });
 
@@ -160,4 +163,3 @@ app.post('/milestones/', (req, res) => {
 const port = 8086;
 app.listen(port);
 console.log('App listening on port ' + port);
-
