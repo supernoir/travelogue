@@ -35,6 +35,18 @@ describe('Journey Class', () => {
     it('should have a second item called end', () => {
       expect(sampleJourney.getJourneyDateRange()[1]).to.have.key('end');
     });
+    describe('Add initial Start Date', () => {
+      it('should add a new date if there is none');
+      it('should not change if a date exists');
+      it('should only change the first item in the array');
+      it('should be a valid Date format');
+    });
+    describe('Add an End Date', () => {
+      it('should add a new date if there is none');
+      it('should not change if a date exists');
+      it('should only change the last item in the array');
+      it('should be a valid Date format');
+    });
   });
   describe('JourneyMilestones', () => {
     it('should be of type array', () => {

@@ -23,6 +23,21 @@ class Journey {
     currentSet.push(newMilestone);
     this.journeyMilestones = currentSet;
   }
+
+  addStartDate(startDate) {
+    if (!this.journeyDateRange[0]) {
+      return this.journeyDateRange[0].push(startDate);
+    }
+  }
+
+  addEndDate(endDate) {
+    let endKey = this.getJourneyDateRange().length();
+    parseInt(endKey);
+    console.log(endKey);
+    if (!this.journeyDateRange[endKey]) {
+      return this.journeyDateRange[endKey].push(endDate);
+    }
+  }
 }
 
 module.exports = Journey;
