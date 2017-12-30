@@ -46,7 +46,6 @@ export default class SingleMilestone extends React.Component {
         <h3><strong>Cast: </strong>{this.state.milestoneCast}</h3>
         <p><strong>Description: </strong>{this.state.milestoneDesc}</p>
         <p><strong>Location: </strong>{this.state.milestoneLoc}</p>
-        <MapBox />
       </div>
     );
   }

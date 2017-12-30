@@ -19,6 +19,7 @@
     "mapbox-gl": "^0.43.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-intl-universal": "^1.7.2",
     "react-mapbox-gl": "^3.4.1",
     "react-router-dom": "^4.2.2",
     "webpack": "^3.10.0",
