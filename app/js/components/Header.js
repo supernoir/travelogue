@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Select from './Select';
+import intl from 'react-intl-universal';
 
 export default class Header extends React.Component {
   render() {
@@ -13,6 +14,7 @@ export default class Header extends React.Component {
         <section className="navbar-center">Travelogue</section>
         <section className="navbar-section">
           <a href="#" className="btn btn-link">Johnny Appleseed</a>
+          {intl.get('salutations.localegreeting')}
           <Select
             options={[
               { id: 1, label: 'English' },

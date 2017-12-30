@@ -1,0 +1,9 @@
+{
+  "WELCOME": "Välkommna till Travelogue!",
+  "JOURNEYNAME": "Namn",
+  "JOURNEYDESC": "Beskrivning",
+  "JOURNEYCAST": "Ensemble",
+  "salutations": {
+    "localegreeting": "Brå att välkommna dig här på svensk!"
+  }
+}

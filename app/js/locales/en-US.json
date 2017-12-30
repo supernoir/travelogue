@@ -1,3 +1,10 @@
 {
-  "WELCOME": "Hello, welcome to Travelogue!"
+  "WELCOME": "Welcome to Travelogue!",
+  "JOURNEYNAME": "Name",
+  "JOURNEYDESC": "Description",
+  "JOURNEYCAST": "Cast",
+  "JOURNEYMILESTONES": "Milestones",
+  "salutations": {
+    "localegreeting": "Nice to welcome you here in English"
+  }
 }

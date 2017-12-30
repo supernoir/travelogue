@@ -12,7 +12,8 @@ import SingleMilestone from './milestone/SingleMilestone';
 
 const locales = {
   'en-US': require('../locales/en-US.json'),
-  'de-DE': require('../locales/de-DE.json')
+  'de-DE': require('../locales/de-DE.json'),
+  'sv-SE': require('../locales/sv-SE.json')
 };
 
 export default class App extends React.Component {
@@ -42,6 +43,7 @@ export default class App extends React.Component {
     return (
       <div>
         <h1>{intl.get('WELCOME')}</h1>
+        <h2>{intl.get('JOURNEYDESC')}</h2>
         <Router>
           <main>
             <Route exact path="/" component={Dashboard} />
