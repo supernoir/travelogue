@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Select from './Select';
 
 export default class Header extends React.Component {
   render() {
@@ -12,8 +13,17 @@ export default class Header extends React.Component {
         <section className="navbar-center">Travelogue</section>
         <section className="navbar-section">
           <a href="#" className="btn btn-link">Johnny Appleseed</a>
+          <Select
+            options={[
+              { id: 1, label: 'English' },
+              { id: 2, label: 'Deutsch' },
+              { id: 3, label: 'Dansk' },
+              { id: 4, label: 'Norsk (Bokmål)' },
+              { id: 5, label: 'Svenska' }
+            ]}
+          />
         </section>
       </header>
-    )
+    );
   }
 }

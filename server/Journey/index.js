@@ -33,7 +33,6 @@ class Journey {
   addEndDate(endDate) {
     let endKey = this.getJourneyDateRange().length();
     parseInt(endKey);
-    console.log(endKey);
     if (!this.journeyDateRange[endKey]) {
       return this.journeyDateRange[endKey].push(endDate);
     }
