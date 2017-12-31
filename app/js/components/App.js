@@ -20,18 +20,40 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      initDone: false
+      initDone: false,
+      selectedLanguage: 'en-US'
     };
   }
 
   componentDidMount() {
-    this.loadLocales();
+    this.loadLocales(this.state.selectedLanguage);
   }
 
-  loadLocales() {
+  componentWillUpdate() {
+    const unsubscribe = this.props.store.subscribe(() => {
+      let currentStore = this.props.store.getState();
+      let lastItem = currentStore.localeChange.length;
+      if (lastItem !== -1) {
+        let currentLocale =
+          currentStore.localeChange[lastItem - 1].locale.locale;
+        this.setState({
+          selectedLanguage: currentLocale
+        });
+        this.loadLocales(this.state.selectedLanguage);
+        this.forceUpdate();
+      } else {
+        this.setState({
+          selectedLanguage: 'en-US'
+        });
+        this.loadLocales(this.state.selectedLanguage);
+      }
+    });
+  }
+
+  loadLocales(lang) {
     intl
       .init({
-        currentLocale: 'de-DE',
+        currentLocale: lang,
         locales
       })
       .then(() => {
@@ -46,14 +68,22 @@ export default class App extends React.Component {
         <h2>{intl.get('JOURNEYDESC')}</h2>
         <Router>
           <main>
-            <Route exact path="/" component={Dashboard} />
-            <Route path="/404*" component={NotFound} />
-            <Route exact path="/journeys" component={JourneyList} />
+            <Route exact path="/" render={props => <Dashboard {...props} />} />
+            <Route path="/404*" render={props => <NotFound {...props} />} />
+            <Route
+              exact
+              path="/journeys"
+              render={props => <JourneyList {...props} />}
+            />
             <Route
               path="/journeys/:journey"
               render={props => <SingleJourney {...props} />}
             />
-            <Route exact path="/journey/new" component={NewJourney} />
+            <Route
+              exact
+              path="/journey/new"
+              render={props => <NewJourney {...props} />}
+            />
             <Route
               path="/milestones/:milestone"
               render={props => <SingleMilestone {...props} />}

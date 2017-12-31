@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Select from './Select';
+import LocaleSelect from '../containers/LocaleSelect';
 import intl from 'react-intl-universal';
 
 export default class Header extends React.Component {
@@ -14,14 +15,11 @@ export default class Header extends React.Component {
         <section className="navbar-center">Travelogue</section>
         <section className="navbar-section">
           <a href="#" className="btn btn-link">Johnny Appleseed</a>
-          {intl.get('salutations.localegreeting')}
-          <Select
+          <LocaleSelect
             options={[
-              { id: 1, label: 'English' },
-              { id: 2, label: 'Deutsch' },
-              { id: 3, label: 'Dansk' },
-              { id: 4, label: 'Norsk (Bokmål)' },
-              { id: 5, label: 'Svenska' }
+              { id: 1, label: 'English', val: 'en-US' },
+              { id: 2, label: 'Deutsch', val: 'de-DE' },
+              { id: 5, label: 'Svenska', val: 'sv-SE' }
             ]}
           />
         </section>
