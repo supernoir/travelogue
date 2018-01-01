@@ -34,8 +34,10 @@ const Characters = mongoose.model('Characters', {
 
 const Journeys = mongoose.model('Journeys', {
   name: String,
+  desc: String,
   cast: Array,
-  desc: String
+  daterange: Array,
+  milestones: Array
 });
 
 const Milestones = mongoose.model('Journey', {

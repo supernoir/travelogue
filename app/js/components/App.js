@@ -64,10 +64,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>{intl.get('WELCOME')}</h1>
-        <h2>{intl.get('JOURNEYDESC')}</h2>
         <Router>
-          <main>
+          <main className="mx-0">
             <Route exact path="/" render={props => <Dashboard {...props} />} />
             <Route path="/404*" render={props => <NotFound {...props} />} />
             <Route
@@ -94,3 +92,8 @@ export default class App extends React.Component {
     );
   }
 }
+
+/* 
+<h1>{intl.get('WELCOME')}</h1>
+<h2>{intl.get('JOURNEYDESC')}</h2>
+*/
