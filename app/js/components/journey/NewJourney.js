@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../Header';
+import axios from 'axios';
 import intl from 'react-intl-universal';
+
+import Header from '../Header';
+
+const baseUri = `http://${window.location.hostname}:8086`;
 
 export default class NewJourney extends React.Component {
   constructor() {
@@ -20,6 +24,7 @@ export default class NewJourney extends React.Component {
     this.addNewJourneyDesc = this.addNewJourneyDesc.bind(this);
     this.addNewJourneyStartDate = this.addNewJourneyStartDate.bind(this);
     this.addNewJourneyEndDate = this.addNewJourneyEndDate.bind(this);
+    this.submitNewJourney = this.submitNewJourney.bind(this);
   }
 
   addNewJourneyName(event) {
@@ -39,13 +44,33 @@ export default class NewJourney extends React.Component {
 
   addNewJourneyStartDate(event) {
     let startDate = event.target.value;
-    console.log(event.target);
     this.setState({ journeyStartDate: startDate });
   }
 
   addNewJourneyEndDate(event) {
     let endDate = event.target.value;
     this.setState({ journeyEndDate: endDate });
+  }
+
+  submitNewJourney() {
+    let name = this.state.journeyName;
+    let cast = this.state.journeyCast;
+    let desc = this.state.journeyDesc;
+    let dateRange = [this.state.journeyStartDate, this.state.journeyEndDate];
+    this.setState({ journeyDateRange: dateRange });
+
+    axios({
+      method: 'post',
+      url: baseUri + '/journeys',
+      data: {
+        name: this.state.journeyName,
+        desc: this.state.journeyDesc,
+        cast: this.state.journeyCast,
+        daterange: this.state.journeyDateRange,
+        startdate: this.state.journeyStartDate,
+        enddate: this.state.journeyEndDate
+      }
+    });
   }
 
   render() {
@@ -140,7 +165,11 @@ export default class NewJourney extends React.Component {
             <Link to="/journeys/" className="btn btn-secondary btn-lg">
               Discard changes
             </Link>
-            <Link to="/journeys/" className="btn btn-primary btn-lg">
+            <Link
+              to="/journeys/"
+              className="btn btn-primary btn-lg"
+              onClick={this.submitNewJourney}
+            >
               Create Journey
             </Link>
           </div>

@@ -36,6 +36,8 @@ const Journeys = mongoose.model('Journeys', {
   name: String,
   desc: String,
   cast: Array,
+  startdate: String,
+  enddate: String,
   daterange: Array,
   milestones: Array
 });
@@ -94,11 +96,17 @@ app.post('/journeys', function(req, res) {
   const journeyName = req.param('name');
   const journeyCast = req.param('cast');
   const journeyDesc = req.param('desc');
+  const journeyDateRange = req.param('daterange');
+  const journeyStartDate = req.param('startdate');
+  const journeyEndDate = req.param('enddate');
 
   const journey = new Journeys();
   journey.name = journeyName;
   journey.cast = journeyCast;
   journey.desc = journeyDesc;
+  journey.daterange = journeyDateRange;
+  journey.startdate = journeyStartDate;
+  journey.enddate = journeyEndDate;
 
   journey.save(function(error, journey) {
     if (error) {

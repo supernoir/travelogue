@@ -8,6 +8,7 @@
     "build": "webpack -p"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

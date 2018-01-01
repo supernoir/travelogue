@@ -1,20 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import Header from '../Header';
 import Card from '../Card';
 import journeydata from '../../data/journeys.json';
 
+import defaultImg from '../../../public/jack-anstey-383370.jpg';
+
 export default class JourneyList extends React.Component {
   constructor() {
     super();
     this.state = {
+      allJourneys: [],
       journeyName: '',
       journeyDesc: '',
       journeyCast: ''
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    axios
+      .get('http://localhost:8086/journeys/all')
+      .then(res => this.setState({ allJourneys: res.data }));
+  }
   render() {
     return (
       <div className="container">
@@ -23,15 +31,18 @@ export default class JourneyList extends React.Component {
           New Journey
         </Link>
         <div className="columns">
-          {journeydata.map(journey => {
+          {this.state.allJourneys.map(journey => {
             return (
               <div className="column col-5">
                 <Card
                   id={journey.id}
                   title={journey.name}
-                  subtitle={'A pretty story'}
-                  img={journey.img}
-                  body={'Here goes some more info'}
+                  subtitle={journey.desc}
+                  img={'jack-anstey-383370.jpg'}
+                  cast={journey.cast}
+                  startdate={journey.startdate}
+                  enddate={journey.enddate}
+                  daterange={journey.daterange}
                   cta={'View Journey'}
                 />
               </div>
