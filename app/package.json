@@ -28,5 +28,8 @@
     "redux": "^3.7.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
+  },
+  "devDependencies": {
+    "stylelint-config-standard": "^18.0.0"
   }
 }
