@@ -6,17 +6,22 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
+const rfs = require('rotating-file-stream')
 
 const app = express()
 
 mongoose.connect('mongodb://localhost/library')
 app.use(express.static(__dirname + '/app'))
 
-// morgan logging to access.log
-const accessLogStream = fs.createWriteStream(
-  path.join(__dirname, 'access.log'),
-  { flags: 'a' }
-)
+const logDirectory = path.join(__dirname, 'log')
+
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
+
+const accessLogStream = rfs('access.log', {
+  interval: '1d',
+  path: logDirectory
+})
+
 app.use(morgan('combined', { stream: accessLogStream }))
 
 app.use(bodyParser.json())
