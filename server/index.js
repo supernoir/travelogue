@@ -7,6 +7,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const rfs = require('rotating-file-stream');
+const spdy = require('spdy');
 
 const app = express();
 
@@ -182,7 +183,22 @@ app.post('/milestones/', async (req, res) => {
   });
 });
 
+// CERTS
+const options = {
+  key: fs.readFileSync(__dirname + '/cert/server.key'),
+  cert: fs.readFileSync(__dirname + '/cert/server.crt')
+};
+
 // LISTENING
 const port = 8086 || process.env.port;
-app.listen(port);
-console.log('App listening on port ' + port);
+/* app.listen(port);
+console.log('App listening on port ' + port); */
+
+spdy.createServer(options, app).listen(port, error => {
+  if (error) {
+    console.error(error);
+    return process.exit(1);
+  } else {
+    console.log('Listening on port: ' + port + '.');
+  }
+});
