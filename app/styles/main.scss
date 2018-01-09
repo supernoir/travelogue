@@ -2,3 +2,30 @@
   height: 400px;
   width: 100%;
 }
+
+.wrapper{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 40px 100px 40px;
+  border: 1px solid red !important;
+}
+
+.header{
+  grid-column: span 12;
+  background-color: sandybrown;
+}
+
+.nav{
+  grid-column: span 4;
+  background-color: rosybrown;
+}
+
+.content{
+  grid-column: span 8;
+  background-color: lemonchiffon;
+}
+
+.footer{
+  grid-column: span 12;
+  background-color: wheat;
+}
