@@ -7,12 +7,25 @@ export default class Dashboard extends React.Component {
       <div className="container">
         <Header />
         <h1>Dashboard</h1>
-        <div className="wrapper">
-          <div className="header">HEADER</div>
-          <div className="nav">MENU</div>
-          <div className="content">CONTENT</div>
-          <div className="footer">FOOTER</div>
-        </div>
+        <main className="page">
+          <header className="header">旅行 - ツラベォグ</header>
+          <nav className="nav">
+            <ul>
+              <li>ダッシュボード</li>
+              <li>旅</li>
+              <li>横顔</li>
+            </ul>
+          </nav>
+          <section className="section">
+            <article className="article">
+              これは私の最初の旅行記です。 あなたが楽しんでくれることを望みます
+            </article>
+            <aside className="aside">
+              あなたの旅にラベルを使うことを検討する
+            </aside>
+          </section>
+          <footer className="footer">ミラージュ ©2018</footer>
+        </main>
 
       </div>
     )

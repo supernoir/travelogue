@@ -1,31 +1,54 @@
+$header-color: rgb(200,100,20);
+$black-color: rgb(20,20,20);
+
+
 .map {
   height: 400px;
   width: 100%;
 }
 
-.wrapper{
+.page{
+  padding: 10px;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 40px 100px 40px;
+  grid-template-columns: 1fr,1fr,1fr;
+  grid-template-rows: 90px auto 40px;
+  grid-template-areas:
+    "header header header"
+    "nav content content"
+    "footer footer footer";
   border: 1px solid red !important;
 }
 
 .header{
-  grid-column: span 12;
-  background-color: sandybrown;
+  padding: 10px;
+  grid-area: header;
+  font-size: 2em;
+  color: $header-color;
+  background-color: rgba($header-color,0.4);
 }
 
 .nav{
-  grid-column: span 4;
+  padding: 10px;
+  grid-area: nav;
   background-color: rosybrown;
 }
 
-.content{
-  grid-column: span 8;
+.section{
+  padding: 10px;
+  grid-area: content;
   background-color: lemonchiffon;
+  display: grid;
+  grid-template-columns: 2fr, 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "article aside";
+}
+
+.article{}
+.aside{
+  background-color: rgba($black-color,0.2);
 }
 
 .footer{
-  grid-column: span 12;
+  grid-area: footer;
   background-color: wheat;
 }
