@@ -3,29 +3,30 @@
   width: 100%;
 }
 
-.wrapper{
+.site {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 40px 100px 40px;
+  grid-template-columns: 1fr, 1fr, 1fr;
+  grid-template-rows: 1fr, 1fr, 1fr;
+  grid-template-areas: "header header header" "nav content content" "footer footer footer";
   border: 1px solid red !important;
 }
 
-.header{
+.header {
   grid-column: span 12;
   background-color: sandybrown;
 }
 
-.nav{
+.nav {
   grid-column: span 4;
   background-color: rosybrown;
 }
 
-.content{
+.content {
   grid-column: span 8;
   background-color: lemonchiffon;
 }
 
-.footer{
+.footer {
   grid-column: span 12;
   background-color: wheat;
 }
