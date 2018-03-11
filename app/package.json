@@ -5,7 +5,18 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --host 0.0.0.0 --port 8082 --watch",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "setupFiles": [
+      "./js/tests/jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -34,6 +45,12 @@
     "webpack-dev-server": "^2.9.7"
   },
   "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.1",
+    "jest": "^22.4.2",
+    "react-test-renderer": "^16.2.0",
+    "sinon": "^4.4.2",
     "stylelint-config-standard": "^18.0.0"
   }
 }

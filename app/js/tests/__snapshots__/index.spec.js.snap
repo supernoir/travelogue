@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders a Title 1`] = `
+<h1>
+  I am a Title
+</h1>
+`;
+
+exports[`Simulate Button clicked 1`] = `
+<a
+  className="btn"
+  href="#"
+  id="button"
+  onClick={[Function]}
+>
+  Click me
+</a>
+`;
+
+exports[`Simulate Button clicked 2`] = `
+<a
+  className="btn"
+  href="#"
+  id="button"
+  onClick={[Function]}
+>
+  Click me
+</a>
+`;
