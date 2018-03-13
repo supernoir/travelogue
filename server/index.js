@@ -84,10 +84,24 @@ baseRoute();
 /** REST: Users Route */
 const usersRoute = () => {
 	app.get('/users', (req, res) => {
-		Users.find((error, users) => {
-			if (error) res.send(error);
-			res.json(users);
-		});
+		try {
+			Users.find((error, users) => {
+				if (error || users.length === 0) {
+					res.json({
+						error: error,
+						errorCode: 500,
+						errorMessage: 'Users -- No Data retrieved'
+					});
+				} else {
+					res.json(users);
+				}
+			});
+		} catch (error) {
+			res.json({
+				errorCode: 404,
+				errorMessage: 'Users -- Could not be found'
+			});
+		}
 	});
 };
 usersRoute();
