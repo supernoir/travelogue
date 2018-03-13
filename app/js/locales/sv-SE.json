@@ -1,9 +1,17 @@
 {
+  "i18n-app-name": "Travelogue",
   "WELCOME": "Välkommna till Travelogue!",
   "JOURNEYNAME": "Namn",
   "JOURNEYDESC": "Beskrivning",
   "JOURNEYCAST": "Ensemble",
   "salutations": {
     "localegreeting": "Brå att välkommna dig här på svensk!"
-  }
+  },
+  "i18n-dashboard-title": "Dit Dashboard",
+  "i18n-config-notfound": "Din konfiguration kunde inte hittas",
+  "i18n-journeylist-title": "Alla dina resor",
+  "i18n-journeylist-cta-createnewjourney": "Skapa ny resa",
+  "i18n-menu-item-dashboard": "Dashboard",
+  "i18n-menu-item-journeys": "Alla resor",
+  "i18n-menu-language-switch-label": "Språkval"
 }

@@ -1,4 +1,5 @@
 {
+  "i18n-app-name": "Travelogue",
   "WELCOME": "Welcome to Travelogue!",
   "JOURNEYNAME": "Name",
   "JOURNEYDESC": "Description",
@@ -6,5 +7,12 @@
   "JOURNEYMILESTONES": "Milestones",
   "salutations": {
     "localegreeting": "Nice to welcome you here in English"
-  }
+  },
+  "i18n-dashboard-title": "Your Dashboard",
+  "i18n-config-notfound": "Your Configuration could not be found",
+  "i18n-journeylist-title": "All your Journeys",
+  "i18n-journeylist-cta-createnewjourney": "Create New Journey",
+  "i18n-menu-item-dashboard": "Dashboard",
+  "i18n-menu-item-journeys": "All Journeys",
+  "i18n-menu-language-switch-label": "Language Selection"
 }

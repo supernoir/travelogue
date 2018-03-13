@@ -3,8 +3,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
-import Title from '../components/Title';
-import Button from '../components/Button';
+import Title from '../components/basics/Title';
+import Button from '../components/basics/Button';
 
 test('Renders a Title', () => {
 	const wrapper = shallow(<Title headline={'I am a Title'} />);
@@ -19,7 +19,7 @@ test('Renders a Title with prop title', () => {
 test('Simulate Button clicked', () => {
 	const wrapper = shallow(<Button label={'Click me'} />);
 	expect(wrapper).toMatchSnapshot();
-	wrapper.find('.btn').simulate('click');
+	wrapper.find('button').simulate('click');
 	expect(wrapper).toMatchSnapshot();
 });
 
