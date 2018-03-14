@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import Select from './Select';
 import LocaleSelect from '../containers/LocaleSelect';
 import intl from 'react-intl-universal';
@@ -16,6 +17,20 @@ const Users = {
 };
 
 export default class Header extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			User: {
+				id: 0,
+				fullName: ''
+			}
+		};
+	}
+
+	componentWillMount() {
+		axios.get('https://localhost:8086/users/1337').then(res => this.setState({ User: res.data })).catch(err => console.log(err));
+	}
+
 	render() {
 		return (
 			<header className="navbar bg-secondary">

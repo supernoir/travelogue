@@ -7,6 +7,7 @@ import Header from '../Header';
 import Card from '../Card';
 import Title from '../basics/Title';
 import LinkButton from '../basics/LinkButton';
+import Toast from '../basics/Toast';
 
 import defaultImg from '../../../public/jack-anstey-383370.jpg';
 
@@ -17,16 +18,37 @@ export default class JourneyList extends React.Component {
 			allJourneys: [],
 			journeyName: '',
 			journeyDesc: '',
-			journeyCast: ''
+			journeyCast: '',
+			showError: false,
+			errorCode: 0,
+			errorTitle: '',
+			errorMessage: ''
 		};
 	}
-	componentDidMount() {
-		axios.get('https://localhost:8086/journeys/all').then(res => this.setState({ allJourneys: res.data })).catch(err => console.log(err));
+	componentWillMount() {
+		axios
+			.get('https://localhost:8086/journeys/all')
+			.then(res => this.setState({ allJourneys: res.data }))
+			.catch(err =>
+				this.setState({
+					showError: true,
+					errorCode: 124,
+					errorTitle: 'Something went wrong',
+					errorMessage: 'There is an issue with the Database. Please consult your admin.'
+				})
+			);
 	}
+
 	render() {
 		return (
 			<div className="container">
 				<Header />
+				<Toast
+					showToast={this.state.showError}
+					toastType={'error'}
+					toastTitle={`${this.state.errorCode} - ${this.state.errorTitle}`}
+					toastContent={this.state.errorMessage}
+				/>
 				<Title headline={intl.get('i18n-journeylist-title')} />
 				<LinkButton target={'/journey/new'} label={intl.get('i18n-journeylist-cta-createnewjourney')} />
 				<div className="columns">
@@ -49,7 +71,6 @@ export default class JourneyList extends React.Component {
 						);
 					})}
 				</div>
-
 			</div>
 		);
 	}
