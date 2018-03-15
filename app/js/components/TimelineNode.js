@@ -1,25 +1,37 @@
 import React from 'react';
+import { Segment, Grid, Image, Header, Label, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 export default class TimelineNode extends React.Component {
-  render() {
-    return (
-      <div
-        className="timeline-item"
-        id="timeline-example-1"
-        key={this.props.id}
-      >
-        <div className="timeline-left">
-          <a className="timeline-icon icon-lg" href="#timeline-example-2">
-            <i className="icon icon-check" />
-          </a>
-        </div>
-        <div className="timeline-content">
-          <div className="tile-content">
-            <p className="tile-title text-bold">{this.props.station}</p>
-            <p className="tile-subtitle">{this.props.date}</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<Segment key={this.props.id}>
+				<Grid>
+					<Grid.Row>
+						<Grid.Column width={2}>
+							<Image src={`../../public/${this.props.image}`} />
+						</Grid.Column>
+						<Grid.Column width={14}>
+							<Header as="h2">
+								{this.props.station}
+								<Label as="a">
+									<Icon name="calendar" />
+									{this.props.date}
+								</Label>
+								<Header.Subheader>{this.props.desc}</Header.Subheader>
+							</Header>
+						</Grid.Column>
+					</Grid.Row>
+				</Grid>
+			</Segment>
+		);
+	}
 }
+
+TimelineNode.propTypes = {
+	id: PropTypes.number,
+	image: PropTypes.string,
+	date: PropTypes.string,
+	station: PropTypes.string,
+	desc: PropTypes.string
+};

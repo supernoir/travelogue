@@ -4,6 +4,7 @@ import intl from 'react-intl-universal';
 
 import Dashboard from './Dashboard';
 import NotFound from './NotFound';
+import Login from './Login';
 import JourneyList from './journey/JourneyList';
 import SingleJourney from './journey/SingleJourney';
 import NewJourney from './journey/NewJourney';
@@ -63,10 +64,10 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<div>
-
 				<Router>
 					<main className="mx-0">
 						<Route exact path="/" render={props => <Dashboard {...props} />} />
+						<Route exact path="/login" render={props => <Login {...props} />} />
 						<Route path="/404*" render={props => <NotFound {...props} />} />
 						<Route exact path="/journeys" render={props => <JourneyList {...props} />} />
 						<Route path="/journeys/:journey" render={props => <SingleJourney {...props} />} />

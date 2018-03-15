@@ -25,7 +25,7 @@ export default class MainMenu extends React.Component {
 		return (
 			<Menu fixed="top" inverted>
 				<Container>
-					<Menu.Item as="a" header>
+					<Menu.Item as="a" header className="brand-logo">
 						{intl.get('i18n-app-name')}
 					</Menu.Item>
 					<MenuItemLink name={'dashboard'} target={'/'} label={intl.get('i18n-menu-item-dashboard')} icon={'dashboard'} />

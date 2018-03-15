@@ -1,2 +1,22 @@
-$header-color: rgb(200, 100, 20);
-$black-color: rgb(20, 20, 20);
+@import url('https://fonts.googleapis.com/css?family=Expletus+Sans:700');
+
+$color-black: rgb(20, 20, 20);
+$color-white: rgb(245, 245, 245);
+$color-lightgrey: rgb(140, 140, 140);
+$color-primary: rgb(60, 160, 120);
+$color-secondary: rgb(160, 60, 120);
+$color-tertiary: rgb(160, 160, 20);
+
+body > div,
+body > div > div,
+body > div > div > div.login-form {
+	height: 100%;
+}
+
+.brand-logo {
+	color: $color-white;
+	text-shadow: 0 1px 0 $color-black, 0 2px 0 rgba($color-white, 0.2);
+	font-family: 'Expletus Sans', cursive;
+	font-weight: 700;
+	font-size: 1.6em;
+}
