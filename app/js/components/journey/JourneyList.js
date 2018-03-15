@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import intl from 'react-intl-universal';
+import { Container, Header, Grid, Segment, Divider } from 'semantic-ui-react';
 
-import Header from '../Header';
+import MainMenu from '../Menu/MainMenu';
 import Card from '../Card';
-import Title from '../basics/Title';
+import Footer from '../basics/Footer';
 import LinkButton from '../basics/LinkButton';
-import Toast from '../basics/Toast';
+import Message from '../basics/Message';
 
 import defaultImg from '../../../public/jack-anstey-383370.jpg';
 
@@ -41,36 +42,41 @@ export default class JourneyList extends React.Component {
 
 	render() {
 		return (
-			<div className="container">
-				<Header />
-				<Toast
-					showToast={this.state.showError}
-					toastType={'error'}
-					toastTitle={`${this.state.errorCode} - ${this.state.errorTitle}`}
-					toastContent={this.state.errorMessage}
-				/>
-				<Title headline={intl.get('i18n-journeylist-title')} />
-				<LinkButton target={'/journey/new'} label={intl.get('i18n-journeylist-cta-createnewjourney')} />
-				<div className="columns">
-					{this.state.allJourneys.map(journey => {
-						return (
-							<div className="column col-5">
-								<Card
-									key={journey.id}
-									id={journey.id}
-									title={journey.name}
-									subtitle={journey.desc}
-									img={'jack-anstey-383370.jpg'}
-									cast={journey.cast}
-									startdate={journey.startdate}
-									enddate={journey.enddate}
-									daterange={journey.daterange}
-									cta={'View Journey'}
-								/>
-							</div>
-						);
-					})}
-				</div>
+			<div>
+				<MainMenu />
+				<Container style={{ marginTop: '7em' }}>
+					<Message
+						showMessage={this.state.showError}
+						type={'error'}
+						title={`${this.state.errorCode} - ${this.state.errorTitle}`}
+						content={this.state.errorMessage}
+					/>
+					<Header as="h1">{intl.get('i18n-journeylist-title')} </Header>
+					<LinkButton target={'/journey/new'} label={intl.get('i18n-journeylist-cta-createnewjourney')} />
+					<Divider />
+					<Grid columns={3} stackable>
+						{this.state.allJourneys.map(journey => {
+							return (
+								<Grid.Column width={5}>
+									<Card
+										key={journey.id}
+										id={journey.id}
+										title={journey.name}
+										subtitle={journey.desc}
+										img={'placeholder.png'}
+										cast={journey.cast}
+										startdate={journey.startdate}
+										enddate={journey.enddate}
+										daterange={journey.daterange}
+										cta={'View Journey'}
+									/>
+								</Grid.Column>
+							);
+						})}
+					</Grid>
+				</Container>
+
+				<Footer />
 			</div>
 		);
 	}

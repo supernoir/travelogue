@@ -1,24 +1,21 @@
 import React from 'react';
+import { Menu, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-export default class LinkButton extends React.Component {
-	constructor() {
-		super();
-	}
-
+export default class MenuItemLink extends React.Component {
 	render() {
 		return (
-			<Button icon as={Link} to={this.props.target}>
+			<Menu.Item as={Link} name={this.props.name} to={this.props.target}>
 				{this.props.icon ? <Icon name={this.props.icon} /> : null}
 				{this.props.label}
-			</Button>
+			</Menu.Item>
 		);
 	}
 }
 
-LinkButton.propTypes = {
+MenuItemLink.propTypes = {
+	name: PropTypes.string.isRequired,
 	target: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	icon: PropTypes.string
